@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $table = 'Messaje';
+    protected $table = 'Message';
     public $timestamps = false;
 
     public function thread() {

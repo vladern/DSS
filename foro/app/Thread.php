@@ -14,6 +14,6 @@ class Thread extends Model
     }
 
     public function messajes() {
-        return $this->hasMany('App\Messaje');
+        return $this->hasMany('App\Message');
     }
 }
