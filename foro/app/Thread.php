@@ -13,7 +13,7 @@ class Thread extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function messajes() {
+    public function messages() {
         return $this->hasMany('App\Message');
     }
 }
