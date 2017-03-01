@@ -16,13 +16,20 @@ class MessageTableSeeder extends Seeder
             ([            
                 'texto' => 'Es mejor linux!!',
                 'fecha' => '1/3/17',
-                //
-                'texto' => 'Es mejor Windows!!',
-                'fecha' => '1/3/17',
-                //
+            ]);
+            DB::table('messages')->insert
+            (
+                [
+                    'texto' => 'Es mejor Windows!!',
+                    'fecha' => '1/3/17',
+                ]
+            );               
+            DB::table('messages')->insert
+            ([
                 'texto' => 'Es mejor Debian!!',
                 'fecha' => '1/3/17',
-            ]);
+            ]);    
+
         
     }
 }
