@@ -10,14 +10,15 @@ class CategoryTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        for($i=0;$i<10;$i++) 
-        {
-            DB::table('categories')->insert
-            ([            
-                'titulo'=>str_random(20),
-                'thread_id'=>$i+1,
-            ]);
-        }
+    {  
+        DB::table('categories')->insert
+        ([            
+            'titulo'=>'Minería Windows',
+            'thread_id'=> 1,
+            'titulo'=>'Minería Linux',
+            'thread_id'=> 2,
+            'titulo'=>'Minería IOS',
+            'thread_id'=>3,
+        ]);
     }
 }

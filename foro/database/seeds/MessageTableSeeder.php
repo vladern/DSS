@@ -16,7 +16,13 @@ class MessageTableSeeder extends Seeder
         {
             DB::table('messages')->insert
             ([            
-                'texto' => str_random(20),
+                'texto' => 'Es mejor linux!!',
+                'fecha' => '1/3/17',
+                //
+                'texto' => 'Es mejor Windows!!',
+                'fecha' => '1/3/17',
+                //
+                'texto' => 'Es mejor Debian!!',
                 'fecha' => '1/3/17',
             ]);
         }

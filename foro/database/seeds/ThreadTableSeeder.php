@@ -11,14 +11,19 @@ class ThreadTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<10;$i++) 
-        {
-            DB::table('threads')->insert
-            ([            
-                'descripcion' => str_random(20),
-                'num_mensajes' => rand(0,50),
-                'message_id' => $i+1,
-            ]);
-        }
+        DB::table('threads')->insert
+        ([            
+            'descripcion' => 'linux vs windows',
+            'num_mensajes' => 1,
+            'message_id' => 1,
+            //
+            'descripcion' => 'IOS vs windows',
+            'num_mensajes' => 1,
+            'message_id' => 2,
+            //
+            'descripcion' => 'Debian vs Ubuntu',
+            'num_mensajes' => 1,
+            'message_id' => 3,
+        ]);
     }
 }
