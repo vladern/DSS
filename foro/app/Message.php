@@ -10,7 +10,7 @@ class Message extends Model
     public $timestamps = false;
 
     public function thread() {
-        return $this->belonsTo('App\Thread');
+        return $this->belongsTo('App\Thread');
     }
 
 }
