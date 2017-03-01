@@ -12,8 +12,6 @@ class MessageTableSeeder extends Seeder
     public function run()
     {
         
-        for($i=0;$i<10;$i++) 
-        {
             DB::table('messages')->insert
             ([            
                 'texto' => 'Es mejor linux!!',
@@ -25,6 +23,6 @@ class MessageTableSeeder extends Seeder
                 'texto' => 'Es mejor Debian!!',
                 'fecha' => '1/3/17',
             ]);
-        }
+        
     }
 }
