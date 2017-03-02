@@ -11,6 +11,7 @@ class ThreadTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('threads')->truncate();
         DB::table('threads')->insert
         ([            
             'descripcion' => 'linux vs windows',

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    protected $table = 'Thread';
+    //protected $table = 'Thread';
     public $timestamps = false;
 
     public function category() {

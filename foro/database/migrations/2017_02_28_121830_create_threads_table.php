@@ -17,8 +17,8 @@ class CreateThreadsTable extends Migration
             $table->increments('id');
             $table->text('descripcion');
             $table->integer('num_mensajes');
-            $table->integer('message_id')->unsigned();
-            $table->foreign('message_id')->references('id')->on('messages');
+            $table->integer('message_id')->unsigned()->nullable();
+            $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade');
             $table->timestamps();
         });
     }

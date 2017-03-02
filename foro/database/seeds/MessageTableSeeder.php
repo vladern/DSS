@@ -12,6 +12,7 @@ class MessageTableSeeder extends Seeder
     public function run()
     {
         
+            DB::table('messages')->truncate();
             DB::table('messages')->insert
             ([            
                 'texto' => 'Es mejor linux!!',
