@@ -16,11 +16,6 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-<<<<<<< HEAD
-            $table->integer('thread_id')->unsigned()->nullable();
-            $table->foreign('thread_id')->references('id')->on('threads')->onDelete('cascade');
-=======
->>>>>>> ramaJorge
             $table->timestamps();
         });
     }
