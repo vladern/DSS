@@ -14,17 +14,14 @@ class CategoryTableSeeder extends Seeder
         DB::table('categories')->insert
         ([            
             'titulo'=>'Minería Windows',
-            'thread_id'=> 1,
         ]);
         DB::table('categories')->insert
         ([
             'titulo'=>'Minería Linux',
-            'thread_id'=> 2,
         ]);
         DB::table('categories')->insert
         ([
             'titulo'=>'Minería IOS',
-            'thread_id'=>3,
         ]);
     }
 }
