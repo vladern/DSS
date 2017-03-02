@@ -14,6 +14,7 @@ class CategoryTableSeeder extends Seeder
         DB::table('categories')->truncate();
         DB::table('categories')->insert
         ([            
+<<<<<<< HEAD
             'titulo'=>'Minería Windows'
         ]);
         DB::table('categories')->insert
@@ -23,6 +24,17 @@ class CategoryTableSeeder extends Seeder
         DB::table('categories')->insert
         ([
             'titulo'=>'Minería IOS'
+=======
+            'titulo'=>'Minería Windows',
+        ]);
+        DB::table('categories')->insert
+        ([
+            'titulo'=>'Minería Linux',
+        ]);
+        DB::table('categories')->insert
+        ([
+            'titulo'=>'Minería IOS',
+>>>>>>> master
         ]);
     }
 }
