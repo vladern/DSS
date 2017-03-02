@@ -30,7 +30,7 @@ class AssociationsTest extends TestCase
         $hilo->save();
         
         $this->assertEquals($hilo->category->titulo, 'General');
-        $this->assertEquals($categoria->threads->descripcion, 'Futbol');
+        $this->assertEquals($categoria->threads, 'Futbol');
         
         $categoria->delete();
         $hilo->delete();

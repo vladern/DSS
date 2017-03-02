@@ -17,11 +17,7 @@ class MessageTableSeeder extends Seeder
             ([            
                 'texto' => 'Es mejor linux!!',
                 'fecha' => '1/3/17',
-<<<<<<< HEAD
-                'thread_id' => 1
-=======
                 'thread_id'=>1,
->>>>>>> master
             ]);
             DB::table('messages')->insert
             (

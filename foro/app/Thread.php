@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-<<<<<<< HEAD
-    //protected $table = 'Thread';
-=======
->>>>>>> ramaJorge
     public $timestamps = false;
 
     public function category() {
