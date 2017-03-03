@@ -31,7 +31,9 @@ class AssociationsTest extends TestCase
         $hilo->save();
         
         $this->assertEquals($hilo->category->titulo, 'General');
-        
+        $this->assertEquals($categoria->threads[0]->descripcion, 'Futbol');
+        $this->assertEquals($categoria->threads[0]->num_mensajes, 0);
+
         $categoria->delete();
         $hilo->delete();
     }
@@ -63,7 +65,10 @@ class AssociationsTest extends TestCase
 
             $this->assertEquals($mensaje->thread->descripcion,'Cual es el');
             $this->assertEquals($mensaje->thread->category->titulo,'Mac vs Linux');
-            
+            $this->assertEquals($categoria->threads[0]->messages[0]->texto,'Probando');
+            $this->assertEquals($categoria->threads[0]->messages[0]->fecha,'3/3/17');
+            $this->assertEquals($hilo->messages[0]->texto,'Probando');
+
             $mensaje->delete();
             $hilo->delete();
             $categoria->delete();

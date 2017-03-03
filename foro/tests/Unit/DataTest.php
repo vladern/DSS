@@ -71,4 +71,5 @@ class DataTest extends TestCase
             $hilo->delete();
             $categoria->delete();
     }
+    
 }
