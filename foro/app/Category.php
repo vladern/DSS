@@ -8,7 +8,8 @@ class Category extends Model
 {
     public $timestamps = false;
 
-    public function threads() {
+    public function threads() 
+    {
         return $this->hasMany('App\Thread');
     }
 }
