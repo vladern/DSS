@@ -18,7 +18,7 @@ class CreateMessagesTable extends Migration
             $table->text('texto');
             $table->string('fecha');
             $table->integer('thread_id')->unsigned();
-            $table->foreign('thread_id')->references('id')->on('threads');
+            $table->foreign('thread_id')->references('id')->on('threads')->onDelete('cascade');
             $table->timestamps();
         });
     }

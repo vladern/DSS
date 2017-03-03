@@ -49,20 +49,28 @@ class AssociationsTest extends TestCase
             $categoria->save();
 
             $hilo = new Thread();
-            $hilo->descripcion = 'Cual es el mejor para la mineria de Bitcoin ?';
+            $hilo->descripcion = 'Cual es el';
             $hilo->num_mensajes = 1;
-            $hilo->thread()->associate($categoria);
             $hilo->save();
 
+            //$hilo->category()->associate($categoria);
+            //$hilo->save();
+
             $mensaje = new Message();
-            $mensaje->texto = 'Estas tonto como vas a minar nada en un Mac si tiene un I5 de m**** :(';
+            $mensaje->texto = 'Estas tonto';
             $mensaje->fecha = '3/3/17';
-            $mensaje->message()->associate($hilo);
+            $mensaje->save();
 
-            $this->assertEquals($categoria->hreads[0]->descipcion,'Cual es el mejor para la mineria de Bitcoin ?');
-            $this->assertEquals($hilo->messages [0]->texto,'Estas tonto como vas a minar nada en un Mac si tiene un I5 de m**** :(');
+            $hilo->messages()->save($mensaje);
+            $categoria->threads()->save($hilo);
 
-            $mensaje->threads()->detach($thread->id);
+            //$mensaje->thread()->associate($hilo);
+            //$mensaje->save();
+
+            $this->assertEquals($categoria->threads[0]->descipcion,'Cual es el');
+            $this->assertEquals($hilo->messages[0]->texto,'Estas tonto');
+
+            //$mensaje->threads()->detach($thread->id);
             $mensaje->delete();
             $hilo->delete();
             $categoria->delete();
