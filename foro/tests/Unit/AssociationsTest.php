@@ -17,7 +17,7 @@ class AssociationsTest extends TestCase
      *
      * @return void
      */
-/*
+
     public function testCategoryThread(){
 
         $categoria = new Category();
@@ -31,11 +31,10 @@ class AssociationsTest extends TestCase
         $hilo->save();
         
         $this->assertEquals($hilo->category->titulo, 'General');
-        $this->assertEquals($categoria->threads, 'Futbol');
         
         $categoria->delete();
         $hilo->delete();
-    }*/
+    }
 
     /**
     * test assosiation messages threads
@@ -51,26 +50,20 @@ class AssociationsTest extends TestCase
             $hilo = new Thread();
             $hilo->descripcion = 'Cual es el';
             $hilo->num_mensajes = 1;
-            $hilo->save();
-
-            //$hilo->category()->associate($categoria);
-            //$hilo->save();
-
+            
             $mensaje = new Message();
-            $mensaje->texto = 'Estas tonto';
+            $mensaje->texto = 'Probando';
             $mensaje->fecha = '3/3/17';
+            
+            $hilo->category()->associate($categoria);
+            $hilo->save();
+            $mensaje->thread()->associate($hilo);
             $mensaje->save();
+            
 
-            $hilo->messages()->save($mensaje);
-            $categoria->threads()->save($hilo);
-
-            //$mensaje->thread()->associate($hilo);
-            //$mensaje->save();
-
-            $this->assertEquals($categoria->threads[0]->descipcion,'Cual es el');
-            $this->assertEquals($hilo->messages[0]->texto,'Estas tonto');
-
-            //$mensaje->threads()->detach($thread->id);
+            $this->assertEquals($mensaje->thread->descripcion,'Cual es el');
+            $this->assertEquals($mensaje->thread->category->titulo,'Mac vs Linux');
+            
             $mensaje->delete();
             $hilo->delete();
             $categoria->delete();
