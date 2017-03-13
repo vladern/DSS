@@ -12,4 +12,7 @@ class Message extends Model
         return $this->belongsTo('App\Thread');
     }
 
+    public function users() {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -15,4 +15,8 @@ class Thread extends Model
     public function messages() {
         return $this->hasMany('App\Message');
     }
+
+    public function users() {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -12,4 +12,8 @@ class Category extends Model
     {
         return $this->hasMany('App\Thread');
     }
+
+    public function users() {
+        return $this->belongsTo('App\User');
+    }
 }
