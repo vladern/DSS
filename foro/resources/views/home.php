@@ -3,6 +3,15 @@
 <title>Mi Web</title>
 </head>
 <body>
-<h1>¡Hola <?php echo $name; ?>!</h1>
+<div class="container">
+    <?php foreach ($usuarios as $user): ?>
+        <?php echo $user->name; ?>
+        <?php echo $user->nick; ?>
+        <?php echo $user->email; ?>
+        <br>
+    <?php endforeach; ?>
+</div>
+
+<?php echo $usuarios->links(); ?>
 </body>
 </html>

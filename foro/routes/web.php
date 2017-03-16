@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,8 @@
 |
 */
 
-Route::get('/{id}', function ($id) {
-    return view('home', array('name' => $id));
+Route::get('/', function () {
+    return view('home', array('usuarios' => User::getUsers()));
 });
+
+
