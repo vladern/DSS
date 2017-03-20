@@ -57,4 +57,10 @@ class User extends Authenticatable
             $user->email = $mail;
             $user->save();
     }
+
+    public static function deleteUser($mail){
+
+            $aBorrar = User::where('email', '=', $mail)->firstOrFail();
+            $aBorrar->delete();
+    }
 }
