@@ -40,7 +40,6 @@ class UserTableSeeder extends Seeder
                 'tipo' => 'normal',
                 'email' => 'vlad@gmail.com',
                 'password' => bcrypt('secret'),
-            ]);
-        
+            ]);        
     }
 }

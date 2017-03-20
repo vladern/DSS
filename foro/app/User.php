@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public function messages() 
     {
         return $this->hasMany('App\Message');
@@ -48,6 +49,10 @@ class User extends Authenticatable
             return $allUsers;
     }
 
+    public static function getUsers(){
+            $allUsers = User::simplePaginate(2);
+            return $allUsers;
+    }
     public static function createUser($nombre, $nick, $mail, $apellidos){
 
             $user = new User;
@@ -58,9 +63,18 @@ class User extends Authenticatable
             $user->save();
     }
 
+
     public static function deleteUser($mail){
 
             $aBorrar = User::where('email', '=', $mail)->firstOrFail();
             $aBorrar->delete();
+
+    public function isAdmin() {
+        $resultado = false;
+        if (tipo == "admin") {
+            $resutado = true;
+        }
+        return resultado;
+
     }
 }
