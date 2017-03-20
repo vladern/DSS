@@ -15,13 +15,17 @@ use App\User;
 use App\Category;
 
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('login', function () {
     return view('login');
 });
 
-Route::get('register', function () {
-    return view('register');
-});
+Route::get('register', 'UserController@index');
+Route::post('store', 'UserController@createUser');
+
 
 Route::get('editprofile', function () {
     return view('editprofile');
