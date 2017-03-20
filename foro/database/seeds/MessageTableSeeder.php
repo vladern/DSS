@@ -18,20 +18,22 @@ class MessageTableSeeder extends Seeder
                 'texto' => 'Es mejor linux!!',
                 'fecha' => '1/3/17',
                 'thread_id'=>1,
+                'user_id' => 1
             ]);
             DB::table('messages')->insert
-            (
-                [
-                    'texto' => 'Es mejor Windows!!',
-                    'fecha' => '1/3/17',
-                    'thread_id'=>2,
-                ]
-            );               
+            ([
+                'texto' => 'Es mejor Windows!!',
+                'fecha' => '1/3/17',
+                'thread_id'=>2,
+                'user_id' => 2
+                
+            ]);               
             DB::table('messages')->insert
             ([
                 'texto' => 'Es mejor Debian!!',
                 'fecha' => '1/3/17',
                 'thread_id'=>3,
+                'user_id' => 3
             ]);    
 
         

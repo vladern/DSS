@@ -26,4 +26,37 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+        public function messages() 
+    {
+        return $this->hasMany('App\Message');
+    }
+    public function threads() 
+    {
+        return $this->hasMany('App\Thread');
+    }
+    public function categories() 
+    {
+        return $this->hasMany('App\Category');
+    }
+    public static function getUsers(){
+            $allUsers = User::simplePaginate(2);
+            return $allUsers;
+    }
+    public static function createUser($nombre, $nick, $mail, $apellidos){
+            $user = new User;
+            $user->name = $nombre;
+            $user->apellidos = $apellidos;
+            $user->nick = $nick;
+            $user->email = $mail;
+            $user->save();
+    }
+
+    public function isAdmin() {
+        $resultado = false;
+        if (tipo == "admin") {
+            $resutado = true;
+        }
+        return resultado;
+    }
 }

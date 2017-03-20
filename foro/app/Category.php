@@ -12,4 +12,17 @@ class Category extends Model
     {
         return $this->hasMany('App\Thread');
     }
+
+      public static function getCategories(){
+            $allCategories = Category::All();
+            return $allCategories;
+    } 
+
+    public static function createCategory($title) {
+    	$category = new Category;
+    	$category->titulo = $title;
+    	$category->save();
+    }
+
+    
 }
