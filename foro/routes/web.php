@@ -35,3 +35,8 @@ Route::get('admin', function () {
     return view('admin', array ('categorias' => Category::getCategories()));
 });
 
+Route::group(['prefix'=>'admin'],function()
+{
+    Route::resource('users','UserController');
+});
+

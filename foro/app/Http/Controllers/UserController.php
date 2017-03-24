@@ -12,6 +12,10 @@ class UserController extends Controller
         return view('register');
     }
 
+    public function create()
+    {
+        return view('admin.users.create');
+    }
     public function getUsers(){
             $allUsers = User::simplePaginate(2);
             return $allUsers;
