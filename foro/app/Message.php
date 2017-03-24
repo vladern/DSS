@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    public $timestamps = false;
+
+    protected $table = 'messages';
+    protected $fillable = ['texto','fecha','thread_id','user_id'];
+
+    public $timestamps = true;
 
     public function thread() {
         return $this->belongsTo('App\Thread');

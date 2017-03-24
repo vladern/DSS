@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+        //Collective\Bus\BusServiceProvider::class,
+
     ],
 
     /*

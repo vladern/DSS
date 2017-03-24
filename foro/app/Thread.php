@@ -3,10 +3,27 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Thread extends Model
 {
-    public $timestamps = false;
+    use Sluggable;
+    public function sluggable()
+    {
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+        return [
+            'slug' => [
+                'source' => 'descripcion'
+            ]
+        ];
+    }
+    protected $table = 'threads';
+    protected $fillable = ['descripcion','num_mensajes','category_id','user_id'];
+    public $timestamps = true;
 
     public function category() {
         return $this->belongsTo('App\Category');
