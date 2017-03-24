@@ -49,3 +49,8 @@ sqlitebrowser database/database.sqlite
 php artisan make:controler NombreDelControlador
 
 //crear un controlador
+
+# Dependencias
+https://github.com/cviebrock/eloquent-sluggable
+
+https://laravelcollective.com/docs/5.3/bus
