@@ -3,9 +3,28 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Category extends Model
 {
+    
+    use Sluggable;
+    public function sluggable()
+    {
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+        return [
+            'slug' => [
+                'source' => 'titulo'
+            ]
+        ];
+    }
+    protected $table = 'categories';
+    protected $fillable = ['titulo','user_id'];
+
     public $timestamps = false;
 
     public function threads() 
@@ -13,9 +32,14 @@ class Category extends Model
         return $this->hasMany('App\Thread');
     }
 
-    public static function getCategories(){
-        $allCategories = Category::All();
-        return $allCategories;
+
+    public function users() {
+        return $this->belongsTo('App\User');
+    }
+
+      public static function getCategories(){
+            $allCategories = Category::All();
+            return $allCategories;
     } 
 
     public static function createCategory($title) {
@@ -23,16 +47,4 @@ class Category extends Model
     	$category->titulo = $title;
     	$category->save();
     }
-
-    public static function modifyCategory($titulo_old, $titulo_new) {
-        $category = Category::where('titulo', '=', $titulo_old)->firstOrFail();
-        $category->titulo = $titulo_new;
-        $category->save();
-    }
-
-    public static function deleteCategory($titulo) {
-        $category = Category::where('titulo', '=', $titulo)->firstOrFail();
-        $category->delete();
-    }
-
 }

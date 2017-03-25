@@ -11,7 +11,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-                    DB::table('users')->insert
+       
+            DB::table('users')->insert
             ([            
                 'name' => 'Jorge',
                 'apellidos' => 'Gomariz Sogorb',
@@ -20,6 +21,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'jorge@gmail.com',
                 'password' => bcrypt('secret'),
             ]);
+
             DB::table('users')->insert
             ([            
                 'name' => 'Hector',
@@ -29,6 +31,7 @@ class UserTableSeeder extends Seeder
                 'email' => 'hector@gmail.com',
                 'password' => bcrypt('secret'),
             ]);
+
             DB::table('users')->insert
             ([            
                 'name' => 'Vlad',
@@ -37,6 +40,6 @@ class UserTableSeeder extends Seeder
                 'tipo' => 'normal',
                 'email' => 'vlad@gmail.com',
                 'password' => bcrypt('secret'),
-            ]);
+            ]);        
     }
 }

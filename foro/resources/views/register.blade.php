@@ -7,7 +7,7 @@
       <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Already have an account !!</a></div>
   </div>
   <div class="panel-body">
-   <form role="form">
+   <form role="form" action='store' method='post'>
    <div class="alert alert-danger">
                 <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
             </div>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="form-group">
-        <input type="text" name="display_name" id="display_name" class="form-control " placeholder="Display Name" tabindex="3">
+        <input type="text" name="nick" id="nick" class="form-control " placeholder="Nick" tabindex="3">
       </div>
       <div class="form-group">
         <input type="email" name="email" id="email" class="form-control " placeholder="Email Address" tabindex="4">
@@ -41,7 +41,12 @@
           </div>
         </div>
       </div>
-  <button type="button" class="btn btn-primary btn-block">Sign Up</button>
+    <input type="hidden" name="_token" value="{{csrf_token()}}">           
+                                  
+                                    
+  <input type="submit" name='submit' value='Sign in' class="btn btn-primary btn-block">
+  
+
 </form>
   </div>
 </div>

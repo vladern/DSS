@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,7 @@
 
 use App\Category;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,9 +23,9 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('register', function () {
-    return view('register');
-});
+Route::get('register', 'UserController@index');
+Route::post('store', 'UserController@createUser');
+
 
 Route::get('editprofile', function () {
     return view('editprofile');
@@ -32,3 +34,15 @@ Route::get('editprofile', function () {
 Route::get('admin', function () {
     return view('admin', array ('categorias' => Category::getCategories()));
 });
+
+Route::group(['prefix'=>'admin'],function()
+{
+    Route::resource('users','UserController');
+});
+
+Route::get('users/{id}/destroy',
+[
+    'uses' => 'UserController@destroy',
+    'as' => 'users.destroy'
+]);
+
