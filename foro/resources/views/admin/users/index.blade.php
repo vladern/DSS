@@ -28,7 +28,7 @@
                     </td>
                     <td>{{ $user->email }} </td>
                     <td>
-                        <a href="" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
+                        <a href="{{route('users.edit',$user->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
                         <a href="{{ route('users.destroy',$user->id)}}" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
                     </td>
                 </tr>
