@@ -33,6 +33,31 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+    public function edit($id)
+    {
+        
+        $user = User::find($id);
+        return view('admin.users.edit')->with('user',$user);
+    }
+    public function update(Request $request,$id)
+    {
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->apellidos = $request->apellidos;
+            $user->nick = $request->nick;
+            $user->email = $request->email;
+            $user->tipo = $request->type;
+            $user->save();
+
+            flash('El usuario '.$user->name.' '.$user->apellidos.' ha sido editado con exito !!','success');
+            return redirect()->route('users.index');
+    }
+    /*
+    *
+    *
+    * antes
+    *
+    */
     public function destroy($id)
     {
         $user = User::find($id);
