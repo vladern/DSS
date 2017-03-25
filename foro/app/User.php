@@ -39,6 +39,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Category');
     }
+    
     public static function getUsers(){
             $allUsers = User::simplePaginate(2);
             return $allUsers;

@@ -13,9 +13,9 @@ class Category extends Model
         return $this->hasMany('App\Thread');
     }
 
-      public static function getCategories(){
-            $allCategories = Category::All();
-            return $allCategories;
+    public static function getCategories(){
+        $allCategories = Category::All();
+        return $allCategories;
     } 
 
     public static function createCategory($title) {
@@ -24,5 +24,15 @@ class Category extends Model
     	$category->save();
     }
 
-    
+    public static function modifyCategory($titulo_old, $titulo_new) {
+        $category = Category::where('titulo', '=', $titulo_old)->firstOrFail();
+        $category->titulo = $titulo_new;
+        $category->save();
+    }
+
+    public static function deleteCategory($titulo) {
+        $category = Category::where('titulo', '=', $titulo)->firstOrFail();
+        $category->delete();
+    }
+
 }
