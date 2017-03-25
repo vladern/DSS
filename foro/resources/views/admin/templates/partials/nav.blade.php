@@ -19,7 +19,7 @@
                         <a href="{{route('users.index')}}">Usuarios</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Categorias</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>

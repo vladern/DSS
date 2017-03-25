@@ -8,14 +8,17 @@
         <thread>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Apellidos</th>
             <th>Tipo</th>
             <th>Email</th>
+            <th>Acción</th>
         </thread>
         <tbody>
             @foreach($users as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->apellidos}}</td>
                     <td>
                     @if( $user->tipo  == "admin")
                         <span class="label label-danger">{{$user->tipo}}</span>
@@ -24,6 +27,10 @@
                     @endif
                     </td>
                     <td>{{ $user->email }} </td>
+                    <td>
+                        <a href="" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
+                        <a href="{{ route('users.destroy',$user->id)}}" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

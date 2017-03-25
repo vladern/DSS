@@ -1,6 +1,6 @@
 @extends('admin.templates.main')
 
-@section('titulo','Crear usuario')
+@section('title','Crear usuario')
 
 @section('contenido')
 
