@@ -16,6 +16,14 @@ class UserController extends Controller
     {
         return view('admin.users.create');
     }
+    public function store(Request $request)
+    {
+        //dd($request->all());
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+        dd('Exito !! Usuario Creado :)'); 
+    }
     public function getUsers(){
             $allUsers = User::simplePaginate(2);
             return $allUsers;

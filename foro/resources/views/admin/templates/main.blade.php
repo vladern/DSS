@@ -7,17 +7,23 @@
 </head>
 <body>
     @include('admin.templates.partials.nav')
-    <div class="container">
-        <section>
-            @yield('contenido')
-        </section>
-
-        <footer>
-            <div class="col-lg-12">
-                <p>Copyright &copy; Foro DSS 2017</p>
+    <div class="container" style="margin-top:70px">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title"><strong>Sign in </strong></h3>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Already have an account !!</a></div>
             </div>
-        </footer>
+            <div class="panel-body">
+                <section>
+                    @yield('contenido')         
+                </section>
+            </div>
+        </div>
     </div>
+    <footer>
+        <div class="col-lg-12">
+            <p>Copyright &copy; Foro DSS 2017</p>
+        </div>
+    </footer>
     <script src="{{asset('plugins/jquery/js/jquery-3.2.0.slim.js')}}"></script>
     <script src="{{asset('plugins/bootstrap/js/botstrap.js')}}"></script>
 
