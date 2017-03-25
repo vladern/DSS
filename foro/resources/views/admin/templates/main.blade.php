@@ -2,15 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('titulo','Default')</title>
+    <title>@yield('title','Default')</title>
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">
 </head>
 <body>
     @include('admin.templates.partials.nav')
     <div class="container" style="margin-top:70px">
         <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title"><strong>Sign in </strong></h3>
-                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Already have an account !!</a></div>
+            <div class="panel-heading"><h3 class="panel-title"><strong> @yield('title','Default')</strong></h3>
+            
             </div>
             <div class="panel-body">
                 <section>

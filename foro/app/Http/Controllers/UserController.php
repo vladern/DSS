@@ -9,7 +9,8 @@ class UserController extends Controller
 {
 
     public function index(){
-        return view('register');
+        $users = User::orderBy('id','asc')->paginate(2);
+        return view('admin.users.index')->with('users',$users);
     }
 
     public function create()
@@ -19,7 +20,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $user = new User($request->all());
+        $user = new User();
+        $user->name = $request->name;
+        $user->apellidos = $request->apellidos;
+        $user->nick = $request->nick;
+        $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
         dd('Exito !! Usuario Creado :)'); 

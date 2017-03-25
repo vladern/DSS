@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="{{route('users.index')}}">Usuarios</a>
                     </li>
                     <li>
                         <a href="#">Services</a>
@@ -28,7 +28,7 @@
 
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="{{ route('users.create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="{{ url('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
 
