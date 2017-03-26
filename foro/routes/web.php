@@ -23,21 +23,24 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('register', 'UserController@index');
+Route::get('admin', 'UserController@index');
+
 Route::post('store', 'UserController@createUser');
+
+Route::get('register', 'UserController@create');
 
 
 Route::get('editprofile', function () {
     return view('editprofile');
 });
 
-Route::get('admin', function () {
-    return view('admin', array ('categorias' => Category::getCategories()));
-});
+//Route::get('admin', function () {
+    //return view('admin', array ('categorias' => Category::getCategories()));
+//});
 
-Route::group(['prefix'=>'admin'],function()
+Route::group(['prefix'=>'/'],function()
 {
-    Route::resource('users','UserController');
+   Route::resource('users','UserController');
 });
 
 Route::get('users/{id}/destroy',

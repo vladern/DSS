@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Category');
     }
 
+    public static function getCategories(){
+            $allCategories = Category::All();
+            return $allCategories;
+    } 
+
     public static function currentUser(){
         return User::find(2);
     }

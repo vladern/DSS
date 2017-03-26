@@ -1,9 +1,6 @@
-@extends('admin.templates.main')        
+@extends('layouts.master')        
 
-@section('title','Lista de usuarios')
-
-
-@section('contenido')
+@section('content')
     <table class="table table-bordered">
         <thread>
             <th>ID</th>

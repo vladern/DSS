@@ -21,6 +21,8 @@
         <!-- Custom CSS -->
     <link href="css/round-about.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -103,6 +105,10 @@
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script src="{{asset('plugins/jquery/js/jquery-3.2.0.slim.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap/js/botstrap.js')}}"></script>
+
 
 
 

@@ -1,8 +1,8 @@
-@extends('admin.templates.main')
+@extends('layouts.master')
 
 @section('title','Crear usuario')
 
-@section('contenido')
+@section('content')
 
    {!! Form::open(['route' => 'users.store','method' => 'POST']) !!}
         <div class="form-group">
