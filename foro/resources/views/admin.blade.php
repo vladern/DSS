@@ -77,6 +77,7 @@
             @endforeach
           </tbody>
         </table>
+        {!! $categories->render() !!}
 
         <h3>Nueva Categoria</h3>
 

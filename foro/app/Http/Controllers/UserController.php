@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Category;
 use Laracasts\Flash\FlashServiceProvider;
 
 class UserController extends Controller
@@ -11,7 +12,7 @@ class UserController extends Controller
 
     public function index(){
         $users = User::orderBy('id','asc')->paginate(5);
-        $categories = User::getCategories();
+        $categories = Category::orderBy('id','asc')->paginate(5);
         return view('admin')->with('users',$users)->with('categories',$categories);
     }
 
