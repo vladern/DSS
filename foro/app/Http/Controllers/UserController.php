@@ -11,13 +11,13 @@ class UserController extends Controller
 
     public function index(){
         $users = User::orderBy('id','asc')->paginate(5);
-        $categorias = User::getCategories();
-        return view('admin')->with('users',$users)->with('categorias',$categorias);
+        $categories = User::getCategories();
+        return view('admin')->with('users',$users)->with('categories',$categories);
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('register');
     }
     public function store(Request $request)
     {
@@ -36,10 +36,10 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        
         $user = User::find($id);
-        return view('admin.users.edit')->with('user',$user);
+        return view('editprofile')->with('user',$user);
     }
+
     public function update(Request $request,$id)
     {
             $user = User::find($id);

@@ -29,10 +29,12 @@ Route::post('store', 'UserController@createUser');
 
 Route::get('register', 'UserController@create');
 
+Route::get('editprofile', 'UserController@edit');
 
-Route::get('editprofile', function () {
-    return view('editprofile');
-});
+
+//Route::get('editprofile', function () {
+//  return view('editprofile');
+//});
 
 //Route::get('admin', function () {
     //return view('admin', array ('categorias' => Category::getCategories()));
@@ -48,4 +50,16 @@ Route::get('users/{id}/destroy',
     'uses' => 'UserController@destroy',
     'as' => 'users.destroy'
 ]);
+
+Route::group(['prefix'=>'/'],function()
+{
+   Route::resource('categories','CategoryController');
+});
+
+Route::get('categories/{id}/destroy',
+[
+    'uses' => 'CategoryController@destroy',
+    'as' => 'categories.destroy'
+]);
+
 

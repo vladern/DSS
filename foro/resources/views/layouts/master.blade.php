@@ -32,7 +32,6 @@
 </head>
 
 <body>
-@section('barra_navegacion')
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     	<!-- Container -->
@@ -74,7 +73,7 @@
         </div>
         <!-- /.container -->
     </nav>
- @show
+
 
 
 
@@ -83,6 +82,7 @@
     <div class="container">
     	@yield('content')
     </div>
+
 
 
     <!-- /.container -->
@@ -97,6 +97,7 @@
             </div>
         </footer>
     </div>
+
 
 
 
