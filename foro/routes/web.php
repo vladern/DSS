@@ -23,14 +23,14 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('admin', 'UserController@index');
-
+Route::get('/', 'UserController@index');
 Route::post('store', 'UserController@createUser');
 
 Route::get('register', 'UserController@create');
 
 Route::get('editprofile', 'UserController@edit');
 
+Route::get('signin', 'UserController@signin');
 
 //Route::get('editprofile', function () {
 //  return view('editprofile');
@@ -50,6 +50,13 @@ Route::get('users/{id}/destroy',
     'uses' => 'UserController@destroy',
     'as' => 'users.destroy'
 ]);
+
+Route::get('users/{user}/signin',
+[
+    'uses' => 'UserController@signin',
+    'as' => 'users.signin'
+]);
+
 
 Route::group(['prefix'=>'/'],function()
 {

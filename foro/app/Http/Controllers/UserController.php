@@ -13,13 +13,14 @@ class UserController extends Controller
     public function index(){
         $users = User::orderBy('id','asc')->paginate(5);
         $categories = Category::orderBy('id','asc')->paginate(5);
-        return view('admin')->with('users',$users)->with('categories',$categories);
+        return view('admin.admin')->with('users',$users)->with('categories',$categories);
     }
 
     public function create()
     {
-        return view('register');
+        return view('admin.register');
     }
+
     public function store(Request $request)
     {
         //dd($request->all());
@@ -38,7 +39,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('editprofile')->with('user',$user);
+        return view('admin.editprofile')->with('user',$user);
     }
 
     public function update(Request $request,$id)
@@ -67,6 +68,11 @@ class UserController extends Controller
         flash('El usuario ha sido borrado de la BBDD', 'danger');
         return redirect()->route('users.index');
     }
+
+
+
+
+    
     public function getUsers(){
             $allUsers = User::simplePaginate(2);
             return $allUsers;
@@ -110,4 +116,6 @@ class UserController extends Controller
         }
         return resultado;
     }
+
+    
 }

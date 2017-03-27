@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Shop Item - Start Bootstrap Template</title>
+    <title>@yield('title','Default')</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -63,8 +63,8 @@
 
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="{{ url('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="{{ route('users.create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="{{ route('users.signin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
 
 

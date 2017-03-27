@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title','Editar usuario ')
+
 @section('content')
 
  <div class="container" style="margin-top:70px">

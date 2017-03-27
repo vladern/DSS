@@ -1,17 +1,14 @@
 @extends('layouts.master')
 
+@section('title','Registrarse')
+
 @section('content')
-
+ <div class="container" style="margin-top:70px">
 <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title"><strong>Registrarse</strong></h3>
-            
-            </div>
-            <div class="panel-body">
-                <section>
-
-        
-
-
+    <div class="panel-heading"><h3 class="panel-title"><strong>Registrarse</strong></h3>
+    </div>
+        <div class="panel-body">
+        <section>
             {!! Form::open(['route' => 'users.store','method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name','Nombre') !!}
@@ -37,16 +34,8 @@
             {!! Form::submit('Registrarse',['class'=> 'btn btn-primary']) !!}
         </div>
     {!! Form::close() !!}
-
-
                 </section>
             </div>
 </div>
-
-
-
-
-
-
-
+</div>
 @endsection
