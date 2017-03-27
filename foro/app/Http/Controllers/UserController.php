@@ -15,6 +15,10 @@ class UserController extends Controller
         $categories = Category::orderBy('id','asc')->paginate(5);
         return view('admin.admin')->with('users',$users)->with('categories',$categories);
     }
+    public function show()
+    {
+        return view('admin.login');
+    }
 
     public function create()
     {

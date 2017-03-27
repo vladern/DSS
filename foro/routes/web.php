@@ -51,7 +51,7 @@ Route::get('users/{id}/destroy',
     'as' => 'users.destroy'
 ]);
 
-Route::get('users/{user}/signin',
+Route::get('users/signin',
 [
     'uses' => 'UserController@signin',
     'as' => 'users.signin'

@@ -14,7 +14,9 @@ class CategoryController extends Controller
 	public function index(){
         $users = User::orderBy('id','asc')->paginate(5);
         $categories = Category::orderBy('id','asc')->paginate(5);
-        return view('admin')->with('users',$users)->with('categories',$categories);
+        $selection0 = '"active"';
+        $selection1 = '';
+        return view('admin.admin')->with('users',$users)->with('categories',$categories)->with('select0',$selection1)->with('select1',$selection0);
     }
 
    public function createCateogry() {
@@ -29,7 +31,7 @@ class CategoryController extends Controller
         $category->user_id = 1;
         $category->save();
 
-        flash('Nuevo Categoria!','success');
+        flash('Nueva Categoria creada con exito !','success');
 
         return redirect()->route('categories.index');
     }
@@ -48,7 +50,7 @@ class CategoryController extends Controller
    	{
         $category = Category::find($id);
         $category->delete();
-        flash('La categoria ha sido borrado de la BBDD', 'danger');
+        flash('La categoría ha sido borrada de la BBDD', 'danger');
         return redirect()->route('categories.index');
     }
 
