@@ -9,6 +9,9 @@
     </div>
         <div class="panel-body">
         <section>
+
+            @include('admin.errors')
+
             {!! Form::open(['route' => 'users.store','method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name','Nombre') !!}

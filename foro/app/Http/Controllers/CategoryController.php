@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\User;
 use Laracasts\Flash\FlashServiceProvider;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -14,16 +15,14 @@ class CategoryController extends Controller
 	public function index(){
         $users = User::orderBy('id','asc')->paginate(5);
         $categories = Category::orderBy('id','asc')->paginate(5);
-        $selection0 = '"active"';
-        $selection1 = '';
-        return view('admin.admin')->with('users',$users)->with('categories',$categories)->with('select0',$selection1)->with('select1',$selection0);
+        return view('admin.admin')->with('users',$users)->with('categories',$categories);
     }
 
    public function createCateogry() {
 
    }
 
-   public function store(Request $request)
+   public function store(CategoryRequest $request)
     {
         //dd($request->all());
         $category = new Category();
@@ -36,8 +35,9 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function editCategory() {
-
+    public function edit() 
+    {
+        dd('No hay nada por el momento');
     }
 
     public static function modifyCategory(Request $request,$id) {

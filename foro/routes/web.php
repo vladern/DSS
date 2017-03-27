@@ -40,33 +40,31 @@ Route::get('signin', 'UserController@signin');
     //return view('admin', array ('categorias' => Category::getCategories()));
 //});
 
-Route::group(['prefix'=>'/'],function()
-{
-   Route::resource('users','UserController');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('users/{id}/destroy',
-[
-    'uses' => 'UserController@destroy',
-    'as' => 'users.destroy'
-]);
-
-Route::get('users/signin',
-[
-    'uses' => 'UserController@signin',
-    'as' => 'users.signin'
-]);
-
-
-Route::group(['prefix'=>'/'],function()
+Route::group(['prefix'=>'admin'],function()
 {
+    Route::resource('users','UserController');
+    Route::get('users/{id}/destroy',
+    [
+        'uses' => 'UserController@destroy',
+        'as' => 'users.destroy'
+    ]);
+    Route::get('users/signin',
+    [
+        'uses' => 'UserController@signin',
+        'as' => 'users.signin'
+    ]);
    Route::resource('categories','CategoryController');
-});
-
-Route::get('categories/{id}/destroy',
-[
+   Route::get('categories/{id}/destroy',
+   [
     'uses' => 'CategoryController@destroy',
     'as' => 'categories.destroy'
-]);
+   ]);
+});
+
+
 
 

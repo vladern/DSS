@@ -10,18 +10,19 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#users" aria-controls="home" role="tab" data-toggle="tab">Usuarios</a></li>
+    <li role="presentation"><a href="#users" aria-controls="home" role="tab" data-toggle="tab">Usuarios</a></li>
     <li role="presentation"><a href="#categories" aria-controls="profile" role="tab" data-toggle="tab">Categorias</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
 
-
+    
     <div role="tabpanel" class="tab-pane active" id="users">
     <div class="panel panel-default">
 		<div class="panel-heading"><h3 class="panel-title"><strong>Admin Users</strong></h3>
             <br/>
+            @include('admin/errors')
             @include('flash::message')
             <table class="table table-bordered">
             <thread>

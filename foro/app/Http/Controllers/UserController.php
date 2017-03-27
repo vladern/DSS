@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Category;
 use Laracasts\Flash\FlashServiceProvider;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
         return view('admin.register');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //dd($request->all());
         $user = new User();
@@ -70,7 +71,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         flash('El usuario ha sido borrado de la BBDD', 'danger');
-        return redirect()->route('users.index');
+        return redirect()->route('categories.index');
     }
 
 
