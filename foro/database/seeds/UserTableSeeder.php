@@ -37,7 +37,7 @@ class UserTableSeeder extends Seeder
                 'name' => 'Vlad',
                 'apellidos' => 'Kuchmenko',
                 'nick' => 'Vladernn',
-                'tipo' => 'normal',
+                'tipo' => 'miembro',
                 'email' => 'vlad@gmail.com',
                 'password' => bcrypt('secret'),
             ]);        

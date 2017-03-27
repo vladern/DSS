@@ -22,8 +22,8 @@
             {!! Form::email('email',$user->email,['class'=>'form-control','placeholder'=>'example@gmail.com','required']) !!}             
         </div>
         <div class="form-group">
-            {!! Form::label('email','Email') !!}
-            {!! Form::select('type',[''=>'Selecione una opción','member'=>'miembro','admin'=>'administrador'],null,['class'=>'form-control']) !!}
+            {!! Form::label('tipo','Tipo Usuario') !!}
+            {!! Form::select('type',[''=>'Selecione una opción','normal'=>'normal','admin'=>'administrador'],null,['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('editar',['class'=> 'btn btn-primary']) !!}
