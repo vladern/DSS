@@ -12,9 +12,10 @@ class CategoryController extends Controller
 {
 
 
-	public function index(){
-        $users = User::orderBy('id','asc')->paginate(5);
-        $categories = Category::orderBy('id','asc')->paginate(5);
+    public function index()
+    {
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
         return view('admin.admin')->with('users',$users)->with('categories',$categories);
     }
 
