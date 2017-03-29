@@ -35,10 +35,15 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'exit']);
     }
     public function showLoginForm()
     {
         return view('auth.login');
+    }
+    public function exit()
+    {
+        \Auth::logout();
+        return redirect('/');
     }
 }

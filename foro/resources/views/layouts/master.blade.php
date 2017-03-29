@@ -38,11 +38,18 @@
                     </li>
                 </ul>
 
+                @if(Auth::check())
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('create') }}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+                        <li><a href="{{ route('exit') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>              
+                @else
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                @endif
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
 
 
             </div>
