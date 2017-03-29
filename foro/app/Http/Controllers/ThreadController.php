@@ -61,4 +61,8 @@ class ThreadController extends Controller
         flash('El hilo ha sido borrado de la BBDD', 'danger');
         return redirect()->route('thread.index');
     }
+    public function show()
+    {
+        return redirect()->route('thread.index');
+    }
 }
