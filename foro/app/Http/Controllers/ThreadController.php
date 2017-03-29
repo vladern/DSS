@@ -10,7 +10,9 @@ class ThreadController extends Controller
 {
     public function index()
     {
-        return view('admin.threads.index');
+        $categories = Category::orderBy('id','asc');
+        $threads = Thread::orderBy('id','asc');
+        return view('admin.admin')->with('threads',$threads)->with('categories',$categories);
     }
     public function create()
     {
