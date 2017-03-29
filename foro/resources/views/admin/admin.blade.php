@@ -9,6 +9,7 @@
    <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#home">Usuarios</a></li>
   <li><a data-toggle="tab" href="#menu1">Categorias</a></li>
+   <li><a data-toggle="tab" href="#menu2">Hilos</a></li>
 </ul>
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
@@ -16,6 +17,9 @@
   </div>
   <div id="menu1" class="tab-pane fade">
       @include('admin.tabCategories')
+  </div>
+  <div id="menu1" class="tab-pane fade">
+      @include('admin.threads.index')
   </div>
   </div>
 @endsection

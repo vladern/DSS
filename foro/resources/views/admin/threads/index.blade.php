@@ -1,7 +1,5 @@
 @extends('layouts.master')
-
-@section('title','Listar Hilos')
-
+@section('title','Lista hilos')
 @section('content')
     </br>
     </br>
@@ -32,6 +30,7 @@
                 </tr>
             @endforeach
         </tbody>
+    </table>
     </div>
     </div>
-@endsection
+    @endsection
