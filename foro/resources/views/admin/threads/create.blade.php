@@ -9,7 +9,7 @@
     <div class="panel panel-default">
 	<div class="panel-heading"><h3 class="panel-title"><strong>Crear un Hilo</strong></h3>
     </br>
-    {!! Form::open(['route' => 'thread.store','method' => 'POST']) !!}
+    {!! Form::open(['route' => 'thread.store','class'=>'form','method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('category_id','Categorias') !!}
             {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Seleccione una categoría','required']) !!}
