@@ -26,10 +26,16 @@ Route::group(['prefix'=>'/'],function()
         'uses' =>'UserController@create',
         'as' => 'create'
     ]);
+    Auth::routes();
+    Route::get('exit',
+    [
+        'uses' => 'Auth\LoginController@exit',
+        'as' => 'exit'
+    ]);
 });
 
 
-Route::group(['prefix'=>'admin'],function()
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
 {
     Route::resource('users','UserController');
     Route::get('/',
@@ -48,17 +54,14 @@ Route::group(['prefix'=>'admin'],function()
     'uses' => 'CategoryController@destroy',
     'as' => 'categories.destroy'
    ]);
+   Route::resource('thread','ThreadController');
+   Route::get('thread/{id}/destroy',
+   [
+    'uses' => 'ThreadController@destroy',
+    'as' => 'thread.destroy'
+   ]);
 });
-
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
-Route::get('exit',
-[
-    'uses' => 'Auth\LoginController@exit',
-    'as' => 'exit'
-]);
+
