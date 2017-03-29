@@ -1,4 +1,5 @@
     </br>
+    <div class="panel panel-default">
 		<div class="panel-heading"><h3 class="panel-title"><strong>Admin categories</strong></h3>
         </br>
         <table class="table table-bordered">
@@ -32,4 +33,5 @@
             </div>
           {!! Form::close() !!}
           {!! $categories->render() !!}
+        </div>
         </div>

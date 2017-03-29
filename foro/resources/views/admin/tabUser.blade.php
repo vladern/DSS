@@ -1,4 +1,5 @@
   <!-- Tab panes -->
+  </br>
     <div class="panel panel-default">
 		<div class="panel-heading"><h3 class="panel-title"><strong>Admin Users</strong></h3>
             <br/>
@@ -36,4 +37,5 @@
             </tbody>
         </table>
         {!! $users->render() !!}
+    </div>
     </div>

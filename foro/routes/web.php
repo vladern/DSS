@@ -14,11 +14,6 @@ use App\User;
 
 use App\Category;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix'=>'/'],function()
 {
     Route::get('signin',
@@ -58,6 +53,7 @@ Route::group(['prefix'=>'admin'],function()
 
 
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Auth::routes();
-Route::get('/', 'HomeController@index');
