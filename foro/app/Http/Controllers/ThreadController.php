@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
+use Illuminate\Support\Facades\Redirect;
+use Laracast\Flash\Flash;
 
 class ThreadController extends Controller
 {
@@ -12,7 +14,7 @@ class ThreadController extends Controller
     {
         $categories = Category::orderBy('id','asc');
         $threads = Thread::orderBy('id','asc');
-        return view('admin.admin')->with('threads',$threads)->with('categories',$categories);
+        return view('admin.threads.index')->with('threads',$threads)->with('categories',$categories);
     }
     public function create()
     {
@@ -28,7 +30,8 @@ class ThreadController extends Controller
         $thread->category_id = $request->category_id;
         $thread->user_id = \Auth::user()->id;
         $thread->save();
-        dd('Hilo creado con exito');
+        flash('El hilo ha sido creado con exito', 'success');
+        return redirect()->route('thread.index');
         
     }
     public function edit(Request $request)
@@ -40,7 +43,8 @@ class ThreadController extends Controller
         $thread->category_id = $request->category_id;
         $thread->user_id = \Auth::user()->id;
         $thread->save();
-        dd('Hilo modificado con exito');
+        flash('El hilo ha sido editado con exito', 'danger');
+        return redirect()->route('thread.index');
     }
     public function destroy($id)
     {
