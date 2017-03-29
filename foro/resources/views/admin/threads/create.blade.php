@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">    
             {!! Form::label('descripcion','Descripción') !!}
-            {!! Form::textarea('descripcion',null,['class'=>'form-control textarea-content','placeholder' => 'Descripción del hilo','required']) !!}
+            {!! Form::text('descripcion',null,['class'=>'form-control','placeholder' => 'Descripción del hilo','required']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('Crear hilo',['clas'=>'btn btn-default']) !!}
@@ -24,10 +24,5 @@
     {!! Form::close()!!}
     </div>
     </div>
-<script>
-    $('.select-categorie').chosen({
 
-    });
-    $('textarea-content').trumbowyg({});
-</script>
 @endsection

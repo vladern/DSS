@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
+use App\User;
 use Illuminate\Support\Facades\Redirect;
 use Laracast\Flash\Flash;
 use App\Http\Requests\ThreadRequest;
@@ -13,9 +14,15 @@ class ThreadController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('id','asc');
-        $threads = Thread::orderBy('id','asc');
-        return view('admin.threads.index')->with('threads',$threads)->with('categories',$categories);
+        $threads = Thread::orderBy('id','desc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->users;
+            $threads->messages;
+        });
+        //dd($threads);
+        return view('admin.threads.index')->with('threads',$threads);
     }
     public function create()
     {
