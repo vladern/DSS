@@ -7,6 +7,7 @@ use App\Category;
 use App\Thread;
 use Illuminate\Support\Facades\Redirect;
 use Laracast\Flash\Flash;
+use App\Http\Requests\ThreadRequest;
 
 class ThreadController extends Controller
 {
@@ -21,7 +22,7 @@ class ThreadController extends Controller
         $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
         return view('admin.threads.create')->with('categories',$categories);
     }
-    public function store(Request $request)
+    public function store(ThreadRequest $request)
     {
         //dd($request);
         $thread = new Thread();
