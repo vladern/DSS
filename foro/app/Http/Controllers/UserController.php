@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Category;
+use App\Thread;
+use App\User;
 use Laracasts\Flash\FlashServiceProvider;
 use App\Http\Requests\UserRequest;
 
@@ -14,7 +15,15 @@ class UserController extends Controller
     public function index(){
         $users = User::orderBy('id','asc')->paginate(4);
         $categories = Category::orderBy('id','asc')->paginate(4);
-        return view('admin.admin')->with('users',$users)->with('categories',$categories);
+        $threads = Thread::orderBy('id','desc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->users;
+            $threads->messages;
+        });
+        //dd($threads);
+        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
     }
     public function show()
     {

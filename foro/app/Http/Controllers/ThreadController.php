@@ -14,7 +14,9 @@ class ThreadController extends Controller
 {
     public function index()
     {
-        $threads = Thread::orderBy('id','desc')->paginate(5);
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','asc')->paginate(5);
         $threads->each(function($threads)
         {
             $threads->category;
@@ -22,7 +24,7 @@ class ThreadController extends Controller
             $threads->messages;
         });
         //dd($threads);
-        return view('admin.threads.index')->with('threads',$threads);
+        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
     }
     public function create()
     {

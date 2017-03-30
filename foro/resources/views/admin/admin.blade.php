@@ -18,9 +18,9 @@
   <div id="menu1" class="tab-pane fade">
       @include('admin.tabCategories')
   </div>
-  <div id="menu1" class="tab-pane fade">
+    <div id="menu2" class="tab-pane fade">
       @include('admin.threads.index')
-  </div>
+    </div>
   </div>
 @endsection
                                         
