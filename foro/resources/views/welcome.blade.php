@@ -3,14 +3,16 @@
 
 @section('content')
 <!-- Page Content -->
+    </br>
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">Categorias</p>
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">Windows</a>
-                    <a href="#" class="list-group-item">Mac</a>
-                    <a href="#" class="list-group-item">Ubuntu</a>
+                
+                @foreach($categories as $category)
+                    <a href="#" class="list-group-item">{{$category->titulo}}</a>
+                @endforeach
                 </div>
             </div>
             <div class="col-md-9">

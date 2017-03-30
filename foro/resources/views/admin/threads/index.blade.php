@@ -28,7 +28,7 @@
             @endforeach
         </tbody>   
     </table>
-    {!! $users->render() !!}
+    {!! $threads->render() !!}
     </div>
     <a href="{{asset('admin/thread/create')}}" class="btn btn-primary" role="button">Crear hilo</a> 
     </div>

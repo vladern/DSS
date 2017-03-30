@@ -31,15 +31,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    @if(Auth::check())
                     <li>
-                        <a href="#">About</a>
+                        <a href="/admin">Administrar</a>    
                     </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    @endif
                 </ul>
 
                 @if(Auth::check())

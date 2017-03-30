@@ -16,6 +16,11 @@ use App\Category;
 
 Route::group(['prefix'=>'/'],function()
 {
+    Route::get('/',
+    [
+        'uses' =>'HomeController@index',
+        'as' => '/'
+    ]);
     Route::get('signin',
     [
         'uses' =>'UserController@show',
@@ -61,7 +66,5 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
     'as' => 'thread.destroy'
    ]);
 });
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
