@@ -19,7 +19,7 @@ class UserController extends Controller
         $threads->each(function($threads)
         {
             $threads->category;
-            $threads->users;
+            $threads->user;
             $threads->messages;
         });
         //dd($threads);

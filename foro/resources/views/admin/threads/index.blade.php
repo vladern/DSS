@@ -16,7 +16,7 @@
                 <tr>
                     <td>{{ $thread->id }}</td>
                     <td>{{ $thread->descripcion }}</td>
-                    <td>{{ $thread->user}}</th>
+                    <td>{{ $thread->user->name}}</th>
                     <td>{{ $thread->category->titulo}}</td>
                     <td>
                         <a href="{{route('thread.edit',$thread->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
