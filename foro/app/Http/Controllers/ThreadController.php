@@ -23,7 +23,7 @@ class ThreadController extends Controller
             $threads->user;
             $threads->messages;
         });
-        dd($threads);
+        //dd($threads);
         return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
     }
     public function create()

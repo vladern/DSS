@@ -9,6 +9,7 @@
         <th>Descripcion</th>
         <th>Usuario</th>
         <th>Categoria</th>
+        <th>Número mensajes</th>
         <th>Acción</th>
         </thread>
           <tbody>
@@ -18,14 +19,16 @@
                     <td>{{ $thread->descripcion }}</td>
                     <td>{{ $thread->user->name}}</th>
                     <td>{{ $thread->category->titulo}}</td>
+                    <td>{{ count($thread->messages)}}</td>
                     <td>
                         <a href="{{route('thread.edit',$thread->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
                         <a href="{{route('thread.destroy',$thread->id)}}" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
                     </td>
                 </tr>
             @endforeach
-        </tbody>
+        </tbody>   
     </table>
     {!! $users->render() !!}
     </div>
+    <a href="{{asset('admin/thread/create')}}" class="btn btn-primary" role="button">Crear hilo</a> 
     </div>
