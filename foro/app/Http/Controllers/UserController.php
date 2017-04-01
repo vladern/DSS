@@ -3,22 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Thread;
 use App\User;
 use Laracasts\Flash\FlashServiceProvider;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
 
     public function index(){
-        $users = User::orderBy('id','asc')->paginate(5);
-        return view('admin.users.index')->with('users',$users);
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','desc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        //dd($threads);
+        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
+    }
+    public function show()
+    {
+        return view('admin.login');
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.register');
     }
-    public function store(Request $request)
+
+    public function store(UserRequest $request)
     {
         //dd($request->all());
         $user = new User();
@@ -35,10 +52,10 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        
         $user = User::find($id);
-        return view('admin.users.edit')->with('user',$user);
+        return view('admin.editprofile')->with('user',$user);
     }
+
     public function update(Request $request,$id)
     {
             $user = User::find($id);
@@ -63,8 +80,13 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         flash('El usuario ha sido borrado de la BBDD', 'danger');
-        return redirect()->route('users.index');
+        return redirect()->route('categories.index');
     }
+
+
+
+
+    
     public function getUsers(){
             $allUsers = User::simplePaginate(2);
             return $allUsers;
@@ -108,4 +130,6 @@ class UserController extends Controller
         }
         return resultado;
     }
+
+    
 }
