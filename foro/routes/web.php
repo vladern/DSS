@@ -31,6 +31,11 @@ Route::group(['prefix'=>'/'],function()
         'uses' =>'UserController@create',
         'as' => 'create'
     ]);
+    Route::post('save',
+    [
+        'uses' =>'UserController@store',
+        'as' => 'save'
+    ]);
     Auth::routes();
     Route::get('exit',
     [
