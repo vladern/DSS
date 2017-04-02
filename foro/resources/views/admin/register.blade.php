@@ -9,7 +9,10 @@
     </div>
         <div class="panel-body">
         <section>
-            {!! Form::open(['route' => 'users.store','method' => 'POST']) !!}
+
+            @include('admin.errors')
+
+            {!! Form::open(['route' => 'save','method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name','Nombre') !!}
             {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre','required']) !!}             

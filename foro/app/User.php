@@ -48,7 +48,7 @@ class User extends Authenticatable
             return $allCategories;
     } 
 
-    public static function currentUser(){
-        return User::find(2);
+    public static function currentUser($id){
+        return User::find($id);
     }
 }

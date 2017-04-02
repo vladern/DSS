@@ -4,24 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Thread;
 use App\User;
 use Laracasts\Flash\FlashServiceProvider;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
 
 
-	public function index(){
-        $users = User::orderBy('id','asc')->paginate(5);
-        $categories = Category::orderBy('id','asc')->paginate(5);
-        return view('admin')->with('users',$users)->with('categories',$categories);
+    public function index()
+    {
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','desc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        //dd($threads);
+        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
     }
 
    public function createCateogry() {
 
    }
 
-   public function store(Request $request)
+   public function store(CategoryRequest $request)
     {
         //dd($request->all());
         $category = new Category();
@@ -29,13 +40,14 @@ class CategoryController extends Controller
         $category->user_id = 1;
         $category->save();
 
-        flash('Nuevo Categoria!','success');
+        flash('Nueva Categoria creada con exito !','success');
 
         return redirect()->route('categories.index');
     }
 
-    public function editCategory() {
-
+    public function edit() 
+    {
+        dd('No hay nada por el momento');
     }
 
     public static function modifyCategory(Request $request,$id) {
@@ -48,7 +60,7 @@ class CategoryController extends Controller
    	{
         $category = Category::find($id);
         $category->delete();
-        flash('La categoria ha sido borrado de la BBDD', 'danger');
+        flash('La categoría ha sido borrada de la BBDD', 'danger');
         return redirect()->route('categories.index');
     }
 

@@ -1,36 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
     <title>@yield('title','Default')</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/shop-item.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
-    <link href="css/blog-post.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
-    <link href="css/round-about.css" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/ui/trumbowyg.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
 </head>
-
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -50,22 +31,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    @if(Auth::check())
                     <li>
-                        <a href="#">About</a>
+                        <a href="/admin">Administrar</a>    
                     </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    @endif
                 </ul>
 
+                @if(Auth::check())
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('create') }}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+                        <li><a href="{{ route('exit') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>              
+                @else
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ route('create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                @endif
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('users.create') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="{{ route('users.signin') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
 
 
             </div>
@@ -73,11 +57,6 @@
         </div>
         <!-- /.container -->
     </nav>
-
-
-
-
-
     <!-- Page Content -->
     <div class="container">
     	@yield('content')
@@ -97,21 +76,10 @@
             </div>
         </footer>
     </div>
-
-
-
-
-    <!-- /.container -->
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <script src="{{asset('plugins/jquery/js/jquery-3.2.0.slim.js')}}"></script>
-    <script src="{{asset('plugins/bootstrap/js/botstrap.js')}}"></script>
-
-
-
-
+       
 </body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script {{asset('js/bootstrap.min.js')}}></script>
 </html>

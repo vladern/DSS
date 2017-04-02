@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Category;
+use App\Thread;
+use App\User;
 use Laracasts\Flash\FlashServiceProvider;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
 
     public function index(){
-        $users = User::orderBy('id','asc')->paginate(5);
-        $categories = Category::orderBy('id','asc')->paginate(5);
-        return view('admin.admin')->with('users',$users)->with('categories',$categories);
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','desc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        //dd($threads);
+        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
+    }
+    public function show()
+    {
+        return view('admin.login');
     }
 
     public function create()
@@ -21,9 +35,8 @@ class UserController extends Controller
         return view('admin.register');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //dd($request->all());
         $user = new User();
         $user->name = $request->name;
         $user->apellidos = $request->apellidos;
@@ -66,7 +79,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         flash('El usuario ha sido borrado de la BBDD', 'danger');
-        return redirect()->route('users.index');
+        return redirect()->route('categories.index');
     }
 
 
