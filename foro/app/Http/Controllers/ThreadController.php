@@ -26,11 +26,13 @@ class ThreadController extends Controller
         //dd($threads);
         return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
     }
+
     public function create()
     {
         $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
         return view('admin.threads.create')->with('categories',$categories);
     }
+
     public function store(ThreadRequest $request)
     {
         //dd($request);
@@ -44,6 +46,7 @@ class ThreadController extends Controller
         return redirect()->route('thread.index');
         
     }
+
     public function edit(Request $request)
     {
         //dd($request);
@@ -56,6 +59,7 @@ class ThreadController extends Controller
         flash('El hilo ha sido editado con exito', 'danger');
         return redirect()->route('thread.index');
     }
+
     public function destroy($id)
     {
         $thread = Thread::find($id);
@@ -63,6 +67,7 @@ class ThreadController extends Controller
         flash('El hilo ha sido borrado de la BBDD', 'danger');
         return redirect()->route('thread.index');
     }
+    
     public function show()
     {
         return redirect()->route('thread.index');

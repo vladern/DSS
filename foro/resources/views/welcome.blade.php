@@ -35,6 +35,7 @@
                         @endif
                         @foreach($thread->messages as $message)
                             {{$thread->user->name}} : {{$message->texto}}
+                            <br>
                         @endforeach
                     </div>
                 </div>

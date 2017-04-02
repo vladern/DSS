@@ -53,23 +53,26 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
         'uses' => 'UserController@index',
         'as' => 'index'
     ]);
+
     Route::get('users/{id}/destroy',
     [
         'uses' => 'UserController@destroy',
         'as' => 'users.destroy'
     ]);
-   Route::resource('categories','CategoryController');
-   Route::get('categories/{id}/destroy',
-   [
-    'uses' => 'CategoryController@destroy',
-    'as' => 'categories.destroy'
-   ]);
-   Route::resource('thread','ThreadController');
-   Route::get('thread/{id}/destroy',
-   [
-    'uses' => 'ThreadController@destroy',
-    'as' => 'thread.destroy'
-   ]);
+
+    Route::resource('categories','CategoryController');
+    Route::get('categories/{id}/destroy',
+    [
+        'uses' => 'CategoryController@destroy',
+        'as' => 'categories.destroy'
+    ]);
+   
+    Route::resource('thread','ThreadController');
+    Route::get('thread/{id}/destroy',
+    [
+        'uses' => 'ThreadController@destroy',
+        'as' => 'thread.destroy'
+    ]);
 });
 
 
