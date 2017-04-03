@@ -28,16 +28,12 @@ class CategoryController extends Controller
         return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
     }
 
-   public function createCateogry() {
-
-   }
-
    public function store(CategoryRequest $request)
     {
         //dd($request->all());
         $category = new Category();
         $category->titulo = $request->titulo;
-        $category->user_id = 1;
+        $category->user_id = \Auth::user()->id;
         $category->save();
 
         flash('Nueva Categoria creada con exito !','success');
@@ -45,15 +41,21 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function edit() 
-    {
-        dd('No hay nada por el momento');
+    public function edit($id) {
+        $category = Category::find($id);
+        return view('admin.editcategory')->with('category',$category);
     }
 
-    public static function modifyCategory(Request $request,$id) {
-    	$category = Category::find($id);
+
+    public function update(Request $request,$id) 
+    {
+        //dd('No hay nada por el momento');
+        $category = Category::find($id);
         $category->titulo = $request->titulo;
+        $category->user_id = \Auth::user()->id;
         $category->save();
+        flash('La categoria ha sido editada con exito', 'danger');
+        return redirect()->route('categories.index');
     }
 
     public function destroy($id)

@@ -44,12 +44,20 @@ class ThreadController extends Controller
         return redirect()->route('thread.index');
         
     }
-    public function edit(Request $request)
+
+    public function edit($id) {
+        $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
+        $thread = Thread::find($id);
+        return view('admin.editthread')->with('thread',$thread)->with('categories',$categories);
+    }
+
+
+    public function update(Request $request,$id)
     {
         //dd($request);
-        $thread = new Thread();
+        $thread = Thread::find($id);
         $thread->descripcion = $request->descripcion;
-        $thread->num_mensajes = 0;
+        $thread->num_mensajes = $thread->num_mensajes;
         $thread->category_id = $request->category_id;
         $thread->user_id = \Auth::user()->id;
         $thread->save();
