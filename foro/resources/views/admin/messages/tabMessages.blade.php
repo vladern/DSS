@@ -18,7 +18,7 @@
                     <td>{{ $message->user->name }}</td>
                     <td>{{ $message->thread->descripcion }}</td>
                     <td>
-                        <a href="{{route('message.edit',$message->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
+                        <!-- <a href="{{route('message.edit',$message->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a> -->
                         <a href="{{route('message.destroy',$message->id)}}" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
                     </td>
 

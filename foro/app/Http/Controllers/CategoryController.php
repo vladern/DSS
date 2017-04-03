@@ -7,6 +7,7 @@ use App\Category;
 use App\Thread;
 use App\User;
 use App\Message;
+use App\Image;
 use Laracasts\Flash\FlashServiceProvider;
 use App\Http\Requests\CategoryRequest;
 
@@ -26,20 +27,17 @@ class CategoryController extends Controller
             $threads->messages;
         });
         $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
         //dd($threads);
-        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages);
+        return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
-
-   public function createCateogry() {
-
-   }
 
    public function store(CategoryRequest $request)
     {
         //dd($request->all());
         $category = new Category();
         $category->titulo = $request->titulo;
-        $category->user_id = 1;
+        $category->user_id = \Auth::user()->id;
         $category->save();
 
         flash('Nueva Categoria creada con exito !','success');
@@ -47,15 +45,21 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function edit() 
-    {
-        dd('No hay nada por el momento');
+    public function edit($id) {
+        $category = Category::find($id);
+        return view('admin.editcategory')->with('category',$category);
     }
 
-    public static function modifyCategory(Request $request,$id) {
-    	$category = Category::find($id);
+
+    public function update(Request $request,$id) 
+    {
+        //dd('No hay nada por el momento');
+        $category = Category::find($id);
         $category->titulo = $request->titulo;
+        $category->user_id = \Auth::user()->id;
         $category->save();
+        flash('La categoria ha sido editada con exito', 'danger');
+        return redirect()->route('categories.index');
     }
 
     public function destroy($id)

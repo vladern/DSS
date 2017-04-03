@@ -11,6 +11,7 @@
   <li><a data-toggle="tab" href="#menu1">Categorias</a></li>
    <li><a data-toggle="tab" href="#menu2">Hilos</a></li>
    <li><a data-toggle="tab" href="#menu3">Mensajes</a></li>
+   <li><a data-toggle="tab" href="#menu4">Imágenes</a></li>
 </ul>
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
@@ -24,6 +25,9 @@
     </div>
     <div id="menu3" class="tab-pane fade">
       @include('admin.messages.tabMessages')
+    </div>
+    <div id="menu4" class="tab-pane fade">
+      @include('admin.files.index')
     </div>
 </div>
 @endsection

@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Category');
     }
 
+    public function image() 
+    {
+        return $this->hasOne('App\Image');
+    }
+
     public static function getCategories(){
             $allCategories = Category::All();
             return $allCategories;
