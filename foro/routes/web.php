@@ -73,6 +73,13 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
         'uses' => 'ThreadController@destroy',
         'as' => 'thread.destroy'
     ]);
+
+    Route::resource('message','MessageController');
+    Route::get('message/{id}/destroy',
+    [
+        'uses' => 'MessageController@destroy',
+        'as' => 'message.destroy'
+    ]);
 });
 
 

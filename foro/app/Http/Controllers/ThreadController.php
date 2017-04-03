@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
 use App\User;
+use App\Message;
 use Illuminate\Support\Facades\Redirect;
 use Laracast\Flash\Flash;
 use App\Http\Requests\ThreadRequest;
@@ -23,8 +24,9 @@ class ThreadController extends Controller
             $threads->user;
             $threads->messages;
         });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
         //dd($threads);
-        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
+        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages);
     }
 
     public function create()

@@ -10,6 +10,7 @@
   <li class="active"><a data-toggle="tab" href="#home">Usuarios</a></li>
   <li><a data-toggle="tab" href="#menu1">Categorias</a></li>
    <li><a data-toggle="tab" href="#menu2">Hilos</a></li>
+   <li><a data-toggle="tab" href="#menu3">Mensajes</a></li>
 </ul>
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
@@ -21,6 +22,9 @@
     <div id="menu2" class="tab-pane fade">
       @include('admin.threads.index')
     </div>
-  </div>
+    <div id="menu3" class="tab-pane fade">
+      @include('admin.messages.tabMessages')
+    </div>
+</div>
 @endsection
                                         
