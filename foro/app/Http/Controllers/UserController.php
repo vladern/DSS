@@ -44,9 +44,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
-
         flash('Bienvenido a bordo!','success');
-
         return redirect()->route('users.index');
     }
     public function edit($id)
