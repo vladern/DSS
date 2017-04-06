@@ -4,13 +4,14 @@
     </br>
     @include('flash::message')
     <table class="table table-bordered">
-        <tr>
+        <thread>
             <th>ID</th>
             <th>Nombre</th>
             <th>Ruta</th>
             <th>Imagen</th>
             <th>Acción</th>
-        </tr>
+        </thread>
+        <tbody>
     @foreach ($images as $img)
     <tr>
         <td>{{ $img->id }}</td>
@@ -24,10 +25,11 @@
         </td>
     </tr>
     @endforeach
-    </table>
-        </div>
-        <div class="pull-left">
-                <a class="btn btn-success" href="{{ route('upload-images.create') }}">Subir Archivo</a>
-            </div>
+     </table>
+     </tbody>
+
     </div>
+                <a class="btn btn-success btn-lg btn-block" href="{{ route('upload-images.create') }}">Subir Archivo</a>
+    </div>
+   
       {!! $images->render() !!}
