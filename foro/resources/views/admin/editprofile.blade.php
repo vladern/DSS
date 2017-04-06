@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('apellidos','Apellidos') !!}
-                    {!! Form::text('apellidos',$user->apellidos,['class'=>'form-control','placeholder'=>'Apelldos','required']) !!}             
+                    {!! Form::text('apellidos',$user->apellidos,['class'=>'form-control','placeholder'=>'Apellidos','required']) !!}             
                 </div>
                 <div class="form-group">
                     {!! Form::label('nick','Nick') !!}

@@ -13,9 +13,14 @@ use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-
-    public function index(){
-        $users = User::orderBy('id','asc')->paginate(4);
+    //aqui hay que descomentar lo comentado y comentar la linea de abajo tambien hay que quitar el request
+    public function index(Request $request){
+        if ($request->name == NULL) {
+            $users = User::orderBy('id','asc')->paginate(5);
+        }
+        else {
+            $users = User::search($request->name)->orderBy('id','asc')->paginate(100);
+        }
         $categories = Category::orderBy('id','asc')->paginate(4);
         $threads = Thread::orderBy('id','asc')->paginate(5);
         $threads->each(function($threads)
@@ -76,6 +81,13 @@ class UserController extends Controller
     * antes
     *
     */
+
+    public function buscar(Request $request) {
+        $users = User::search($request->name)->orderBy('id','DESC')->paginate(5);
+        return view('admin.admin')->with('users',$users);
+    }
+
+
     public function destroy($id)
     {
         $user = User::find($id);

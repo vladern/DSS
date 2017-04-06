@@ -56,4 +56,9 @@ class User extends Authenticatable
     public static function currentUser($id){
         return User::find($id);
     }
+
+    public function scopeSearch($query, $name) {
+        return $query->where('name','LIKE',"%$name%");
+    }
+
 }

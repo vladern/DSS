@@ -80,6 +80,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
         'uses' => 'MessageController@destroy',
         'as' => 'message.destroy'
     ]);
+    
     Route::resource('upload-images','ImageController');
     Route::resource('images','ImageController');
     Route::get('images/{id}/destroy',
