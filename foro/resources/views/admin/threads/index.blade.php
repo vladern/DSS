@@ -6,9 +6,7 @@
     <table class="table table-bordered">
         <thread>
         <th>
-            <a href="{{route('thread.index',['dir'=>'desc'])}}">
-                <h4>ID</h4>
-            </a>
+            ID
         </th>
         <th>Descripcion</th>
         <th>Usuario</th>
@@ -33,6 +31,7 @@
         </tbody>   
     </table>
         </div>
-    <a href="{{asset('admin/thread/create')}}" class="btn btn-primary btn-lg btn-block" role="button">Crear hilo</a> 
+    <a href="{{asset('admin/thread/create')}}" class="btn btn-primary btn-lg btn-block" role="button">Crear hilo</a>
+    <a href="{{route('thread.index',['dir'=>'desc'])}}" class="btn btn-primary btn-lg btn-block" role="button">Ordenar</a> 
     </div>
     {!! $threads->render() !!}
