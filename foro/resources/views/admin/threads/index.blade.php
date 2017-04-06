@@ -5,7 +5,11 @@
     @include('flash::message')
     <table class="table table-bordered">
         <thread>
-        <th>ID</th>
+        <th>
+            <a href="{{route('thread.index',['dir'=>'desc'])}}">
+                <h4>ID</h4>
+            </a>
+        </th>
         <th>Descripcion</th>
         <th>Usuario</th>
         <th>Categoria</th>

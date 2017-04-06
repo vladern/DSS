@@ -11,6 +11,7 @@ use App\Image;
 use Illuminate\Support\Facades\Redirect;
 use Laracast\Flash\Flash;
 use App\Http\Requests\ThreadRequest;
+use Illuminate\Support\Facades\Input;
 
 class ThreadController extends Controller
 {
@@ -18,7 +19,14 @@ class ThreadController extends Controller
     {
         $users = User::orderBy('id','asc')->paginate(4);
         $categories = Category::orderBy('id','asc')->paginate(4);
-        $threads = Thread::orderBy('id','asc')->paginate(5);
+        $dir = Input::get('dir');
+        if($dir == 'desc')
+        {
+            $threads = Thread::orderBy('id' , $dir)->paginate(5);
+        }else
+        {
+            $threads = Thread::orderBy('id','asc')->paginate(5);
+        }
         $threads->each(function($threads)
         {
             $threads->category;
@@ -27,6 +35,7 @@ class ThreadController extends Controller
         });
         $messages = Message::orderBy('id', 'asc')->paginate(4);
         $images = Image::orderBy('id','asc')->paginate(5);
+
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
