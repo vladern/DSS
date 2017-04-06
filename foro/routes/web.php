@@ -53,23 +53,40 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
         'uses' => 'UserController@index',
         'as' => 'index'
     ]);
+
     Route::get('users/{id}/destroy',
     [
         'uses' => 'UserController@destroy',
         'as' => 'users.destroy'
     ]);
-   Route::resource('categories','CategoryController');
-   Route::get('categories/{id}/destroy',
-   [
-    'uses' => 'CategoryController@destroy',
-    'as' => 'categories.destroy'
-   ]);
-   Route::resource('thread','ThreadController');
-   Route::get('thread/{id}/destroy',
-   [
-    'uses' => 'ThreadController@destroy',
-    'as' => 'thread.destroy'
-   ]);
+
+    Route::resource('categories','CategoryController');
+    Route::get('categories/{id}/destroy',
+    [
+        'uses' => 'CategoryController@destroy',
+        'as' => 'categories.destroy'
+    ]);
+   
+    Route::resource('thread','ThreadController');
+    Route::get('thread/{id}/destroy',
+    [
+        'uses' => 'ThreadController@destroy',
+        'as' => 'thread.destroy'
+    ]);
+
+    Route::resource('message','MessageController');
+    Route::get('message/{id}/destroy',
+    [
+        'uses' => 'MessageController@destroy',
+        'as' => 'message.destroy'
+    ]);
+    Route::resource('upload-images','ImageController');
+    Route::resource('images','ImageController');
+    Route::get('images/{id}/destroy',
+    [
+        'uses' => 'ImageController@destroy',
+        'as' => 'images.destroy'
+    ]);
 });
 
 

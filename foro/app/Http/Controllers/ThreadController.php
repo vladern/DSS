@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
 use App\User;
+use App\Message;
+use App\Image;
 use Illuminate\Support\Facades\Redirect;
 use Laracast\Flash\Flash;
 use App\Http\Requests\ThreadRequest;
@@ -23,14 +25,18 @@ class ThreadController extends Controller
             $threads->user;
             $threads->messages;
         });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
         //dd($threads);
-        return view('admin.admin')->with('threads',$threads)->with('users',$users)->with('categories',$categories);
+        return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
+
     public function create()
     {
         $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
         return view('admin.threads.create')->with('categories',$categories);
     }
+
     public function store(ThreadRequest $request)
     {
         //dd($request);
@@ -44,18 +50,26 @@ class ThreadController extends Controller
         return redirect()->route('thread.index');
         
     }
-    public function edit(Request $request)
+
+    public function edit($id) {
+        $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
+        $thread = Thread::find($id);
+        return view('admin.editthread')->with('thread',$thread)->with('categories',$categories);
+    }
+
+    public function update(Request $request,$id)
     {
         //dd($request);
-        $thread = new Thread();
+        $thread = Thread::find($id);
         $thread->descripcion = $request->descripcion;
-        $thread->num_mensajes = 0;
+        $thread->num_mensajes = $thread->num_mensajes;
         $thread->category_id = $request->category_id;
         $thread->user_id = \Auth::user()->id;
         $thread->save();
         flash('El hilo ha sido editado con exito', 'danger');
         return redirect()->route('thread.index');
     }
+
     public function destroy($id)
     {
         $thread = Thread::find($id);
@@ -63,6 +77,7 @@ class ThreadController extends Controller
         flash('El hilo ha sido borrado de la BBDD', 'danger');
         return redirect()->route('thread.index');
     }
+    
     public function show()
     {
         return redirect()->route('thread.index');

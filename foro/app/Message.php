@@ -16,7 +16,11 @@ class Message extends Model
         return $this->belongsTo('App\Thread');
     }
 
-    public function users() {
+    public function user() {
         return $this->belongsTo('App\User');
+    }
+
+    public function images() {
+        return $this->hasMany('App\Image');
     }
 }
