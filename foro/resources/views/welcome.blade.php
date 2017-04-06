@@ -34,7 +34,8 @@
                             No hay mensajes,se el primero en dejar uno.
                         @endif
                         @foreach($thread->messages as $message)
-                            {{$thread->user->name}} : {{$message->texto}}
+                                {{$message->user->name}} : {{$message->texto}}
+                            <br>
                         @endforeach
                     </div>
                 </div>

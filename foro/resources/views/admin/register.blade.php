@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('apellidos','Apellidos') !!}
-            {!! Form::text('apellidos',null,['class'=>'form-control','placeholder'=>'Apelldos','required']) !!}             
+            {!! Form::text('apellidos',null,['class'=>'form-control','placeholder'=>'Apellidos','required']) !!}             
         </div>
         <div class="form-group">
             {!! Form::label('nick','Nick') !!}
