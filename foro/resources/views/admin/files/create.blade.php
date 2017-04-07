@@ -3,7 +3,7 @@
 @section('title','Subir Archivos')
 
 @section('content')
- 
+<div class="container" style="margin-top:70px">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -25,7 +25,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>Subir archivo:</strong>
-                {!! Form::file('imagen', array('class' => 'form-control')) !!}
+                {!! Form::file('imagen', array('class' => 'btn btn-default btn-file')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -33,4 +33,5 @@
         </div>
     </div>
     {!! Form::close() !!}
+</div>
 @endsection
