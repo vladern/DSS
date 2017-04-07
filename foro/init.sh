@@ -1,6 +1,6 @@
 #!/bin/bash
 
-composert install
+composer install
 cp .env.example .env
 touch database/database.sqlite
 php artisan migrate
