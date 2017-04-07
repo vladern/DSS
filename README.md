@@ -2,9 +2,6 @@
 Proyecto git para DSS
 
 # Install
-composert install
-
-touch database/database.sqlite
 
 ./init.sh
 
