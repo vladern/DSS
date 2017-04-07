@@ -39,7 +39,7 @@
         {!! $users->render() !!}
 
 
-        <h3>Buscar Usuario</h3>
+        <h3>Buscar</h3>
           {!! Form::open(['route' => 'users.index','method' => 'GET']) !!}
             <div class="input-group">
               {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Name']) !!} 
@@ -49,9 +49,7 @@
               </span>  
             </div>
           {!! Form::close() !!}
-
-
-        <h3>Buscar Email</h3>
+          <br>
           {!! Form::open(['route' => 'users.index','method' => 'GET']) !!}
             <div class="input-group">
               {!! Form::text('email',null,['class'=>'form-control','placeholder'=>'Email']) !!} 

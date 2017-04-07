@@ -24,7 +24,7 @@
                 @foreach($threads as $thread)
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="img-circle img-responsive img-center" src="https://yt3.ggpht.com/-ZFXH0VqNE3M/AAAAAAAAAAI/AAAAAAAAAAA/tCv9jhjaCTk/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" width="64" height="64" alt="">
+                        <img class="img-circle img-responsive img-center" src="images/cara.png" width="64" height="64" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
