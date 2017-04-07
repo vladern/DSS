@@ -20,9 +20,9 @@ class ThreadController extends Controller
         $users = User::orderBy('id','asc')->paginate(4);
         $categories = Category::orderBy('id','asc')->paginate(4);
         $dir = Input::get('dir');
-        if($dir == 'desc')
+        if($dir == 'asc')
         {
-            $threads = Thread::orderBy('id' , $dir)->paginate(5);
+            $threads = Thread::orderBy('num_mensajes' ,$dir)->paginate(5);
         }else
         {
             $threads = Thread::orderBy('id','asc')->paginate(5);

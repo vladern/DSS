@@ -30,8 +30,9 @@
             @endforeach
         </tbody>   
     </table>
-        </div>
-    <a href="{{asset('admin/thread/create')}}" class="btn btn-primary btn-lg btn-block" role="button">Crear hilo</a>
-    <a href="{{route('thread.index',['dir'=>'desc'])}}" class="btn btn-primary btn-lg btn-block" role="button">Ordenar</a> 
-    </div>
     {!! $threads->render() !!}
+     <a href="{{asset('admin/thread/create')}}" class="btn btn-primary btn-lg btn-block" role="button">Crear hilo</a>
+    <a href="{{route('thread.index',['dir'=>'desc'])}}" class="btn btn-primary btn-lg btn-block" role="button">Ordenar</a>
+    </div> 
+    </div>
+    
