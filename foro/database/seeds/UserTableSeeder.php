@@ -11,14 +11,35 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<10;$i++) 
-        {
+       
             DB::table('users')->insert
             ([            
-                'name' => str_random(10),
-                'email' => str_random(10).'@gmail.com',
+                'name' => 'Jorge',
+                'apellidos' => 'Gomariz Sogorb',
+                'nick' => 'JorgeElMelenas',
+                'tipo' => 'admin',
+                'email' => 'jorge@gmail.com',
                 'password' => bcrypt('secret'),
             ]);
-        }
+
+            DB::table('users')->insert
+            ([            
+                'name' => 'Hector',
+                'apellidos' => 'Guillo Anton',
+                'nick' => 'CurtidorDeLomos',
+                'tipo' => 'admin',
+                'email' => 'hector@gmail.com',
+                'password' => bcrypt('secret'),
+            ]);
+
+            DB::table('users')->insert
+            ([            
+                'name' => 'Vlad',
+                'apellidos' => 'Kuchmenko',
+                'nick' => 'Vladernn',
+                'tipo' => 'miembro',
+                'email' => 'vlad@gmail.com',
+                'password' => bcrypt('secret'),
+            ]);        
     }
 }

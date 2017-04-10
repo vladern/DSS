@@ -17,18 +17,21 @@ class ThreadTableSeeder extends Seeder
             'descripcion' => 'linux vs windows',
             'num_mensajes' => 1,
             'category_id' => 1,
+            'user_id' => 2
          ]);
          DB::table('threads')->insert
          ([
             'descripcion' => 'IOS vs windows',
             'num_mensajes' => 1,
             'category_id' => 2,
+            'user_id' => 1
          ]);
          DB::table('threads')->insert
          ([
             'descripcion' => 'Debian vs Ubuntu',
             'num_mensajes' => 1,
             'category_id' => 3,
+            'user_id' => 3
          ]);
        
     }

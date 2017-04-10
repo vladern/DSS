@@ -26,4 +26,43 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function messages() 
+    {
+        return $this->hasMany('App\Message');
+    }
+
+    public function threads() 
+    {
+        return $this->hasMany('App\Thread');
+    }
+
+    public function categories() 
+    {
+        return $this->hasMany('App\Category');
+    }
+
+    public function image() 
+    {
+        return $this->hasOne('App\Image');
+    }
+
+    public static function getCategories(){
+            $allCategories = Category::All();
+            return $allCategories;
+    } 
+
+    public static function currentUser($id){
+        return User::find($id);
+    }
+
+    public function scopeSearch($query, $name) {
+        return $query->where('name','LIKE',"%$name%");
+    }
+
+    public function scopeEmail($query, $email) {
+        return $query->where('email','LIKE',"%$email%");
+    }
+
 }

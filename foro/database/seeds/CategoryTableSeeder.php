@@ -11,18 +11,21 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {  
-        DB::table('categories')->truncate();
+        DB::table('categories')->delete();
         DB::table('categories')->insert
         ([            
-            'titulo'=>'Minería Windows'
+            'titulo'=>'Minería Windows',
+            'user_id' => 1
         ]);
         DB::table('categories')->insert
         ([
-            'titulo'=>'Minería Linux'
+            'titulo'=>'Minería Linux',
+            'user_id' => 2
         ]);
         DB::table('categories')->insert
         ([
             'titulo'=>'Minería IOS',
+            'user_id' => 1
         ]);
     }
 }
