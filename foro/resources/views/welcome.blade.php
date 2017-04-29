@@ -9,26 +9,34 @@
 </br>
 </br>
 </br>
+
+<div class="container">
+    <div class="row">    
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">Filtrar</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#contains">Recientes</a></li>
+                      <li><a href="#its_equal">Antiguos</a></li>
+                      <li><a href="#greather_than">Populares</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">         
+                <input type="text" class="form-control" name="x" placeholder="Buscar hilo">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+    </div>
+</div>
+
 </br>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <p class="lead">Categorias</p>
-                <div class="list-group">
-                
-                @foreach($categories as $category)
-                    <a href="#" class="list-group-item">{{$category->titulo}}</a>
-                @endforeach
-                </div>
-            </div>
-
-            <div class="col-md-9">
-                
-                <br/>
-                <br/>
-                <!-- Posted Comments --> 
-                <!-- Comment -->
+            <div class="col-8">
                 @foreach($threads as $thread)
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
