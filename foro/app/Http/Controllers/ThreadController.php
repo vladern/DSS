@@ -75,7 +75,7 @@ class ThreadController extends Controller
         $thread->category_id = $request->category_id;
         $thread->user_id = \Auth::user()->id;
         $thread->save();
-        flash('El hilo ha sido editado con exito', 'danger');
+        flash('El hilo ha sido editado con exito', 'success');
         return redirect()->route('thread.index');
     }
 
@@ -87,8 +87,10 @@ class ThreadController extends Controller
         return redirect()->route('thread.index');
     }
     
-    public function show()
+    public function show($id)
     {
-        return redirect()->route('thread.index');
+        $thread = Thread::find($id);
+        $messages = $thread->messages;
+        return view('messagespage')->with('thread',$thread)->with('messages',$messages);
     }
 }

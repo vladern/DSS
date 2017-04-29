@@ -35,7 +35,11 @@
                     <li>
                         <a href="/admin">Administrar</a>    
                     </li>
-                    @endif
+
+                    <li>
+                        <a href="{{ route('categories.index') }}">Categorias</a>    
+                    </li>
+                    @endif    
                 </ul>
 
                 @if(Auth::check())

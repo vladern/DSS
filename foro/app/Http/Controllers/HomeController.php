@@ -11,12 +11,12 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id','asc')->paginate(7);
-        $threads = Thread::orderBy('id','asc')->paginate(7);
+        $threads = Thread::orderBy('num_mensajes','desc')->paginate(7);
         $threads->each(function($threads)
         {
             $threads->category;
             $threads->user;
-            $threads->messages;
+            $threads->messages->first();
         });
         //dd($threads);
         return view('welcome')->with('threads',$threads)->with('categories',$categories);
