@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $users = User::orderBy('id','asc')->paginate(4);
-        $categories = Category::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(100);
         $threads = Thread::orderBy('id','asc')->paginate(5);
         $threads->each(function($threads)
         {
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         $messages = Message::orderBy('id', 'asc')->paginate(4);
         $images = Image::orderBy('id','asc')->paginate(5);
         //dd($threads);
-        return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+        return view('categorypage', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
 
    public function store(CategoryRequest $request)
@@ -70,8 +70,9 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function getCategories(){
-        $allCategories = Category::All();
-        return $allCategories;
+    public function show($id){
+        $category = Category::find($id);
+        $threads = $category->threads;
+        return view('threadspage')->with('category',$category)->with('threads',$threads);
     } 
 }
