@@ -1,53 +1,102 @@
- <link href="css/subirarchivo.css" rel="stylesheet">
+
 @extends('layouts.master')
 @section('title','Welcome')
 @section('content')
-<!-- Page Content -->
-    </br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <p class="lead">Categorias</p>
-                <div class="list-group">
-                
-                @foreach($categories as $category)
-                    <a href="#" class="list-group-item">{{$category->titulo}}</a>
-                @endforeach
+
+<link href="/css/estilomensaje.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+</br>
+</br>
+</br>
+<div class="col-md-12">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item disabled">
+                Categorías
+            </a>
+            @foreach($threads as $thread)
+                <a href="{{route('thread.show',$thread)}}" class="list-group-item">{{$thread->descripcion}}</a>
+            @endforeach
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <div class="row">    
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Filtrar</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                        <li><a href="#contains">Recientes</a></li>
+                        <li><a href="#its_equal">Antiguos</a></li>
+                        <li><a href="#greather_than">Populares</a></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">         
+                    <input type="text" class="form-control" name="x" placeholder="Buscar hilo">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
                 </div>
             </div>
-            <div class="col-md-9">
-                
-                <br/>
-                <br/>
-                <!-- Posted Comments --> 
-                <!-- Comment -->
-                @foreach($threads as $thread)
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="img-circle img-responsive img-center" src="images/cara.png" width="64" height="64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">
-                        {{$thread->descripcion}}
-                        </h4>
-                        @if(count($thread->messages)==0)
-                            No hay mensajes,se el primero en dejar uno.
-                        @endif
-                        @foreach($thread->messages as $message)
-                                {{$message->user->name}} : {{$message->texto}}
-                            <br>
-                        @endforeach
-                    </div>
-                </div>
-                @endforeach
-                <br/>
-                <br/>
+        </div>
+        </br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8">
+                    @foreach($threads as $thread)
+                        <div class="panel panel-white post panel-shadow">
+                            <div class="post-heading">
+                                <div class="pull-left image">
 
+                                    <?php
+                                        $contador = DB::table('images')->where('user_id',$thread->user_id)->count();
+
+                                        if ($contador == 0) {
+                                            $icono = "default.jpg";
+                                        }
+                                        else {
+                                            $fotoperfil = DB::table('images')->where('user_id',$thread->user_id)->orderby('id','desc')->first();
+                                            $icono = $fotoperfil->imagen;
+                                        }
+                                    ?>
+
+                                    <img src="images/{{$icono}}" class="img-circle avatar" alt="user profile image">
+
+                                </div>
+                                <div class="pull-left meta">
+                                    <div class="title h5">
+                                        <a href="{{route('thread.show',$thread->id)}}"><b>{{$thread->descripcion}}</b></a>
+                                    </div>
+                                    <h6 class="text-muted time">Posted by:  {{$thread->user->name}}</h6>
+                                    <h6 class="text-muted time">Date:  {{$thread->created_at}}</h6>
+                                </div>
+                        <span class="pull-right">
+                        <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}
+                        </span>
+                    </div> 
+                        
+                        @foreach($thread->messages as $message)
+                            <div class="post-description">                     
+                                <p>{{$message->texto}}</p>
+                            </div>
+                            @break
+                        @endforeach
+
+                    </div>
+                        @endforeach
+                    {!! $threads->render() !!}
+
+                </div>
             </div>
         </div>
     </div>
-    <!-- /.container -->
+</div>
 @endsection
+
+
 
 
     

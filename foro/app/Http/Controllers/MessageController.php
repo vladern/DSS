@@ -10,7 +10,7 @@ use App\Message;
 use App\Image;
 use Illuminate\Support\Facades\Redirect;
 use Laracast\Flash\Flash;
-use App\Http\Requests\ThreadRequest;
+use App\Http\Requests\MessageRequest;
 
 class MessageController extends Controller
 {
@@ -35,7 +35,32 @@ class MessageController extends Controller
    	{
         $message = Message::find($id);
         $message->delete();
+
+        $updatethread = Thread::find($message->thread_id);
+        $updatethread->num_mensajes -= 1;
+        $updatethread->save();
+
         flash('El mensaje ha sido borrado', 'danger');
         return redirect()->route('message.index');
+    }
+
+    public function store (Request $request) 
+    {
+        //dd($request);
+        $message = new Message();
+        $message->texto = $request->texto;
+        $message->fecha = 'fecha';
+        $message->thread_id = $request->thread_id;
+        $message->user_id = \Auth::user()->id;
+        $message->save();
+
+        $updatethread = Thread::find($request->thread_id);
+        $updatethread->num_mensajes += 1;
+        $updatethread->save();
+
+        flash('Mensaje enviado con exito !','success');
+
+        //falta poner esto bine y que no te redirecciona a ningun lado
+        return redirect()->back();
     }
 }

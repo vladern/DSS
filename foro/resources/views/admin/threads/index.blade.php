@@ -5,9 +5,7 @@
     @include('flash::message')
     <table class="table table-bordered">
         <thread>
-        <th>
-            ID
-        </th>
+        <th>ID</th>
         <th>Descripcion</th>
         <th>Usuario</th>
         <th>Categoria</th>
