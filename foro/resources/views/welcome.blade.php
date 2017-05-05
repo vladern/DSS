@@ -41,7 +41,21 @@
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+
+                        <?php
+                            $contador = DB::table('images')->where('user_id',$thread->user_id)->count();
+
+                            if ($contador == 0) {
+                                $icono = "default.jpg";
+                            }
+                            else {
+                                $fotoperfil = DB::table('images')->where('user_id',$thread->user_id)->orderby('id','desc')->first();
+                                $icono = $fotoperfil->imagen;
+                            }
+                        ?>
+
+                        <img src="images/{{$icono}}" class="img-circle avatar" alt="user profile image">
+
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
