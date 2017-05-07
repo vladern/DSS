@@ -53,7 +53,7 @@
                     </div>
                 </div> 
                 <div class="post-description"> 
-                    <p>{{$message->texto}}</p>
+                    <p>{!!  nl2br(e($message->texto)) !!}</p>
                 </div>
             </div>
         </div>
@@ -75,6 +75,7 @@
 
                     <div class="form-group">
                         {!! Form::submit('Enviar',['class'=> 'btn btn-primary']) !!}
+                        {!! Form::submit('Añadir Imagen',['class'=> 'btn btn-success pull-right']) !!}
                     </div>
                     {!! Form::hidden('thread_id', $thread->id) !!}
                     {!! Form::close() !!}

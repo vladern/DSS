@@ -68,14 +68,9 @@
         <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}
         </span>
                 </div> 
-                
-                @foreach($thread->messages as $message)
                     <div class="post-description">                     
-                        <p>{{$message->texto}}</p>
-                    </div>
-                    @break
-                @endforeach
 
+                    </div>
             </div>
                 @endforeach
                 {!! $threads->render() !!}
