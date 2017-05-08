@@ -44,7 +44,7 @@
 
                 @if(Auth::check())
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ route('create') }}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+                        <li><a href="{{route('users.edit',Auth::user()->id)}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
                         <li><a href="{{ route('exit') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>              
                 @else

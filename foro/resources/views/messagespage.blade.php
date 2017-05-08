@@ -29,7 +29,21 @@
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
-                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+
+
+                        <?php
+                            $contador = DB::table('images')->where('user_id',$message->user_id)->count();
+
+                            if ($contador == 0) {
+                                $icono = "default.jpg";
+                            }
+                            else {
+                                $fotoperfil = DB::table('images')->where('user_id',$message->user_id)->orderby('id','desc')->first();
+                                $icono = $fotoperfil->imagen;
+                            }
+                        ?>
+
+                        <img src="/images/{{$icono}}" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
@@ -39,7 +53,7 @@
                     </div>
                 </div> 
                 <div class="post-description"> 
-                    <p>{{$message->texto}}</p>
+                    <p>{!!  nl2br(e($message->texto)) !!}</p>
                 </div>
             </div>
         </div>
@@ -61,6 +75,7 @@
 
                     <div class="form-group">
                         {!! Form::submit('Enviar',['class'=> 'btn btn-primary']) !!}
+                        {!! Form::submit('Añadir Imagen',['class'=> 'btn btn-success pull-right']) !!}
                     </div>
                     {!! Form::hidden('thread_id', $thread->id) !!}
                     {!! Form::close() !!}
