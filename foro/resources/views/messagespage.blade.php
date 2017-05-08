@@ -53,7 +53,18 @@
                     </div>
                 </div> 
                 <div class="post-description"> 
-                    <p>{!!  nl2br(e($message->texto)) !!}</p>
+                    <!--<p>{!!  nl2br(e($message->texto)) !!}</p>-->
+
+                     <?php
+                        $string = $message->texto;
+                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU");          
+                        $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">");            
+                        echo preg_replace($search, $replace, nl2br(e($string)));
+
+                        //$search = array("/\[img]([^'\"]*)\[\/img]/iU");
+                        //$replace = array("<img src=\"\\1\">");
+                    ?>
+
                 </div>
             </div>
         </div>
