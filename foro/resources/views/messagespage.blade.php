@@ -73,20 +73,39 @@
 </div>
 </br>
 
+<script>
+function addText(event) {
+    var targ = event.target || event.srcElement;
+    document.getElementById("area").value += targ.textContent || targ.innerText;
+}
+</script>
+
 
 <div class="container">
     <div class="row">
         <div class="well">
-            <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
 
+            <ol onclick="addText(event)">
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li>
+            <span class="glyphicon glyphicon-link"></span></button>
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li>
+            <span class="	glyphicon glyphicon-picture"></span></button>
+            </ol>
+
+            <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment: 
+            </h4>
+            
                     {!! Form::open(['route' => 'message.store','method' => 'POST']) !!}
-                    <div class="form-group">    
-                        {!! Form::textarea('texto',null,['class'=>'form-control','placeholder' => 'Texto','required']) !!}
+                    <div class="form-group">
+                        {!! Form::textarea('texto',null,[
+                        'id' => 'area',
+                        'class'=>'form-control',
+                        'placeholder' => 'Texto',
+                        'required']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::submit('Enviar',['class'=> 'btn btn-primary']) !!}
-                        {!! Form::submit('Añadir Imagen',['class'=> 'btn btn-success pull-right']) !!}
                     </div>
                     {!! Form::hidden('thread_id', $thread->id) !!}
                     {!! Form::close() !!}
