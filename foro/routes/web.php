@@ -45,7 +45,7 @@ Route::group(['prefix'=>'/'],function()
 });
 
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
+Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
 {
     Route::resource('users','UserController');
     Route::get('/',
