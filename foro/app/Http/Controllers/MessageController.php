@@ -31,6 +31,23 @@ class MessageController extends Controller
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
 
+    public function frame()
+    {
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','asc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
+        //dd($threads);
+        return view('admin.messages.tabMessages', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+    }
+
     public function destroy($id)
    	{
         $message = Message::find($id);

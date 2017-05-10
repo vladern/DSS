@@ -33,6 +33,23 @@ class ImageController extends Controller
 
      public function create(){
         return view('admin.files.create');
+     }
+
+    public function frame(Request $request){
+
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','asc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
+        //dd($threads);
+        return view('admin.files.index', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
 
     public function store(Request $request) {
