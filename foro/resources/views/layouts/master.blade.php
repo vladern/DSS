@@ -32,14 +32,15 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     @if(Auth::check())
-                    <li>
-                        <a href="/admin">Administrar</a>    
-                    </li>
-
+                        @if(Auth::user()->tipo=='admin')
+                        <li>
+                            <a href="/admin">Administrar</a>    
+                        </li>
+                        @endif
+                    @endif 
                     <li>
                         <a href="{{ route('categories.index') }}">Categorias</a>    
-                    </li>
-                    @endif    
+                    </li>   
                 </ul>
 
                 @if(Auth::check())

@@ -13,7 +13,7 @@ class Admin
             return $next($request);
         }else
         {   
-            return redirect('/');
+            abort(401);
         }
         
     }
