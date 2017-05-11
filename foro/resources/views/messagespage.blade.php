@@ -13,19 +13,15 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-8">
+        <div class="col-md-12">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading" style="background-color: #D8D8D8">
                     <h3 href="#"><b>{{$thread->descripcion}}</b> <span class="label label-warning pull-right">{{$thread->category->titulo}}</span> </h3>
-                </div> 
-            </div>
-        </div>
-    </div>
-
+                </div>
 
 @foreach ($messages as $message)
-    <div class="row">
-        <div class="col-8">
+    <div class="row" style="margin-top:2%">
+        <div class="col-md-11" style="margin-left:5%">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
@@ -54,7 +50,7 @@
                 </div> 
                 <div class="post-description"> 
                     <!--<p>{!!  nl2br(e($message->texto)) !!}</p>-->
-
+                    <div class="well">
                      <?php
                         $string = $message->texto;
                         $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU");          
@@ -64,12 +60,15 @@
                         //$search = array("/\[img]([^'\"]*)\[\/img]/iU");
                         //$replace = array("<img src=\"\\1\">");
                     ?>
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endforeach
+</div>
+</div>
+</div>
 </div>
 </br>
 

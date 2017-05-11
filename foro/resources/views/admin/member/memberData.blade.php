@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title','Editar Usuario ')
+@section('title','Datos personales')
 
 @section('content')
 
  <div class="container" style="margin-top:70px">
     <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title"><strong>Editar Usuario {{$user->name}}</strong></h3>     
+        <div class="panel-heading"><h3 class="panel-title"><strong>Datos personales de {{$user->name}}</strong></h3>     
         </div>
             <div class="panel-body">
             </br>
