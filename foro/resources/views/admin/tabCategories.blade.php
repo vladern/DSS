@@ -17,8 +17,8 @@
                     <td>{{ $category->titulo }}</td>
                     <td>{{ $category->user->name}}</th>
                     <td>
-                        <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
-                        <a href="{{route('categories.destroy',$category->id)}}" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
+                        <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning" target="_parent"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
+                        <a href="{{route('categories.destroy',$category->id)}}" target="_parent" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
                     </td>
 
                 </tr>
