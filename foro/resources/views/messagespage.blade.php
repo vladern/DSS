@@ -57,8 +57,11 @@
 
                      <?php
                         $string = $message->texto;
-                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU");          
-                        $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">");            
+                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU","/\[vid]([^'\"]*)\[\/vid]/iU");          
+                        $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">",
+                            "<div class=\"embed-responsive embed-responsive-16by9\">
+  <iframe class=\"embed-responsive-item\" src=\"\\1\"></iframe>
+</div>");            
                         echo preg_replace($search, $replace, nl2br(e($string)));
 
                         //$search = array("/\[img]([^'\"]*)\[\/img]/iU");
@@ -89,7 +92,9 @@ function addText(event) {
             <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li>
             <span class="glyphicon glyphicon-link"></span></button>
             <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li>
-            <span class="	glyphicon glyphicon-picture"></span></button>
+            <span class="glyphicon glyphicon-picture"></span></button>
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li>
+            <span class="glyphicon glyphicon glyphicon-film"></span></button>
             </ol>
 
             <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment: 
@@ -114,6 +119,11 @@ function addText(event) {
         </div>
     </div>
 </div>
+
+
+<!--<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PIh2xe4jnpk"></iframe>
+</div>-->
 
 
 @endsection
