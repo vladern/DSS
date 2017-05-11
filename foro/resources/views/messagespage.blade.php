@@ -60,7 +60,7 @@
                         $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU","/\[vid]([^'\"]*)\[\/vid]/iU");          
                         $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">",
                             "<div class=\"embed-responsive embed-responsive-16by9\">
-  <iframe class=\"embed-responsive-item\" src=\"\\1\"></iframe>
+  <iframe class=\"embed-responsive-item\" src=\"\\1\" frameborder=\"0\" allowfullscreen></iframe>
 </div>");            
                         echo preg_replace($search, $replace, nl2br(e($string)));
 
