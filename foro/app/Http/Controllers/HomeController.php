@@ -12,8 +12,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('id','asc')->paginate(7);
-        $threads = Thread::orderBy('num_mensajes','desc')->paginate(7);
+        $categories = Category::orderBy('id','asc')->paginate(10);
+        $threads = Thread::orderBy('num_mensajes','desc')->paginate(10);
         $threads->each(function($threads)
         {
             $threads->category;

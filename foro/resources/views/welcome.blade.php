@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('title','Welcome')
 @section('content')
@@ -12,11 +11,16 @@
 <div class="col-md-12">
     <div class="col-md-3">
         <div class="list-group">
-            <a href="#" class="list-group-item disabled">
-                Categorías
+            <a href="{{route('categories.index',$categories)}}" class="list-group-item" style="text-align:center;background-color:black;text-transform: uppercase;color: white;">
+                Top 5 categorias
             </a>
-            @foreach($threads as $thread)
-                <a href="{{route('thread.show',$thread)}}" class="list-group-item">{{$thread->descripcion}}</a>
+            @php ($cont = 0)
+            @foreach($categories as $category)
+                @php ($cont++)
+                <a href="{{route('categories.show',$category)}}" class="list-group-item">{{$category->titulo}}</a>
+                @if($cont==5)
+                    @break
+                @endif
             @endforeach
         </div>
     </div>
@@ -78,31 +82,12 @@
                         </span>
                     </div> 
                         
-                        @foreach($thread->messages as $message)
-                            <div class="post-description">                     
-                                <p>{{$message->texto}}</p>
-                            </div>
-                            @break
-                        @endforeach
 
                     </div>
                         @endforeach
-                    {!! $threads->render() !!}
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-
-
-
-    
-
-
-
-
-
-
