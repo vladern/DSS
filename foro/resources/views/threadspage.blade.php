@@ -12,6 +12,9 @@
 </br/>
 
             <div class="panel panel-white post panel-shadow">
+                <div class="col-md-1" style="float:right;margin-top:2%">
+                    <a href="{{route('thread.newThread')}}" style="float:right;" class="btn btn-info" role="button">nuevo</a>
+                </div>
                 <div class="post-heading">
                     <div class="pull-left image">
                         <img src="http://irdl.info.yorku.ca/files/2014/02/category-icon-panel.png" class="img-circle avatar" alt="user profile image">
@@ -23,7 +26,6 @@
                         <h6 class="text">Descripcion de la Categoria</h6>
                     </div>
 
-
                     <?php
                         $totalmensajes = DB::table('threads')->where('category_id',$category->id)->sum('num_mensajes');
                     ?>
@@ -33,11 +35,7 @@
                         </br>
                         <span class="glyphicon glyphicon-comment pull-right"> {{$totalmensajes}} </span>
                     </div>
-
-
-                    </div> 
-
-
+                    </div>
 
 
                 <div class="col-md-12" style="margin-top:2%">
@@ -79,5 +77,4 @@
 </div>
 </div>
 </div>
-
 @endsection

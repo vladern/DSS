@@ -47,7 +47,6 @@ Route::group(['prefix'=>'/'],function()
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     
     Route::resource('categories','CategoryController');
-    Route::resource('thread','ThreadController');
     Route::resource('message','MessageController');
     Route::resource('upload-images','ImageController');
     Route::resource('images','ImageController');
@@ -55,11 +54,20 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
             'uses' => 'UserController@memeber',
             'as' => 'users.memberData'
     ]);
-    
+    Route::get('thread/newThread',[
+        'uses' =>'ThreadController@createByMemeber',
+        'as'=>'thread.newThread'
+    ]);
+        Route::post('storeThread',[
+        'uses' =>'ThreadController@storeByMember',
+        'as'=>'thread.storedByMember'
+    ]);
+    Route::resource('thread','ThreadController');
 });
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
 {
-    Route::resource('users','UserController');
+    
+    Route::resource('users','UserController');  
     Route::get('/',
     [
         'uses' => 'UserController@index',

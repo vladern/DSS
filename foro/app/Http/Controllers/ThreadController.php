@@ -39,11 +39,16 @@ class ThreadController extends Controller
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
+    public function createByMemeber()
+    {
+        $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
+        return view('admin.threads.create')->with('categories',$categories);
+    }
 
     public function create()
     {
         $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
-        return view('admin.threads.create')->with('categories',$categories);
+        return view('admin.threads.newThread')->with('categories',$categories);
     }
 
     public function store(ThreadRequest $request)
@@ -59,7 +64,17 @@ class ThreadController extends Controller
         return redirect()->route('thread.index');
         
     }
-
+    public function storeMember(ThreadRequest $request)
+    {
+        $thread = new Thread();
+        $thread->descripcion = $request->descripcion;
+        $thread->num_mensajes = 0;
+        $thread->category_id = $request->category_id;
+        $thread->user_id = \Auth::user()->id;
+        $thread->save();
+        flash('El hilo ha sido creado con exito', 'success');
+        return redirect()->route('/');
+    }
     public function edit($id) {
         $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
         $thread = Thread::find($id);
