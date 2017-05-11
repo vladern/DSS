@@ -69,7 +69,11 @@ class UserController extends Controller
         $user = User::find($id);
         return view('admin.editprofile')->with('user',$user);
     }
-
+    public function memeber($id)
+    {
+        $user = User::find($id);
+        return view('admin.member.memberData')->with('user',$user);
+    }
     public function update(Request $request,$id)
     {
             $user = User::find($id);

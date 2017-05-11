@@ -51,6 +51,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::resource('message','MessageController');
     Route::resource('upload-images','ImageController');
     Route::resource('images','ImageController');
+    Route::get('users/{id}/memeberData',[
+            'uses' => 'UserController@memeber',
+            'as' => 'users.memberData'
+    ]);
+    
 });
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
 {
