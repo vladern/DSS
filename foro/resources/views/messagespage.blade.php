@@ -39,7 +39,7 @@
                             }
                         ?>
 
-                        <img src="/images/{{$icono}}" class="img-circle avatar" alt="user profile image">
+                    <img src="/images/{{$icono}}" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
@@ -47,6 +47,22 @@
                         </div>
                         <h6 class="text-muted time">Date: {{$message->created_at}}</h6>
                     </div>
+                    <ul style="list-style-type:none;float:right;margin-right:2%;margin-bottom: 10%;">
+                    @if(Auth::check())
+                        <li>
+                            <a href="" role="button">
+                                <span class="glyphicon glyphicon-pencil" >Citar</span>
+                            </a>
+                        </li>
+                        @if(Auth::user()->tipo=='admin')
+                        <li>
+                            <a href="{{route('message.destroy',$message->id)}}" onclick="return confirm('Estas seguro ?')"  role="button">
+                                <span class="glyphicon glyphicon-remove ">Delete</span>
+                            </a>
+                        </li>   
+                        @endif
+                    @endif    
+                    </ul>
                 </div> 
                 <div class="post-description"> 
                     <!--<p>{!!  nl2br(e($message->texto)) !!}</p>-->

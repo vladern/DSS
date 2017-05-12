@@ -12,9 +12,7 @@
 </br/>
 
             <div class="panel panel-white post panel-shadow">
-                <div class="col-md-1" style="float:right;margin-top:2%">
-                    <a href="{{route('thread.newThread')}}" style="float:right;" class="btn btn-info" role="button">nuevo</a>
-                </div>
+            
                 <div class="post-heading">
                     <div class="pull-left image">
                         <img src="http://irdl.info.yorku.ca/files/2014/02/category-icon-panel.png" class="img-circle avatar" alt="user profile image">
@@ -30,11 +28,23 @@
                         $totalmensajes = DB::table('threads')->where('category_id',$category->id)->sum('num_mensajes');
                     ?>
 
-                    <div class="col-8">
-                        <span class="glyphicon glyphicon-th-list pull-right"> {{$category->threads->count()}} </span>
-                        </br>
-                        <span class="glyphicon glyphicon-comment pull-right"> {{$totalmensajes}} </span>
-                    </div>
+                    <span class="pull-right">
+                        <ul style="list-style-type:none">
+                            <li>
+                                <span class="glyphicon glyphicon-th-list pull-right"> {{$category->threads->count()}} </span>
+                            </li>
+                            <li>
+                                <span class="glyphicon glyphicon-comment pull-right" style="margin-top:1%"> {{$totalmensajes}} </span>
+                            </li>
+                            <li>
+                                <a href="{{route('thread.create')}}">
+                                <button type="button" class="btn btn-secondary btn-sm" style="margin-top:20%">
+                                    <span class="glyphicon glyphicon-plus pull-right" >Hilo</span>
+                                </button>
+                                </a>
+                            </li>
+                        </ul>
+                    </span>
                     </div>
 
 
@@ -58,7 +68,6 @@
 
                                 <img src="/images/{{$icono}}" class="img-circle avatar" alt="user profile image">
                             </div>
-                            
                             <div class="pull-left meta">
                                 <div class="title h5">
                                     <a href="{{route('thread.show',$thread->id)}}"><b>{{$thread->descripcion}}</b></a>
@@ -67,8 +76,21 @@
                                 <h6 class="text-muted time">Date:  {{$thread->created_at}}</h6>
                             </div>
                             <span class="pull-right">
+                            <ul style="list-style-type:none">
+                            <li>
                                 <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}
                                 </span>
+                            </li>
+                                @if(Auth::check())
+                                    @if(Auth::user()->tipo=='admin')
+                                    <li>
+                                        <a href="{{route('thread.destroy',$thread->id)}}" onclick="return confirm('Estas seguro ?')"  role="button">
+                                            <span class="glyphicon glyphicon-remove " aria-hidden="true">Delete</span>
+                                        </a>
+                                    </li>   
+                                    @endif
+                                @endif 
+                            </ul>    
                             </span>
                     </div>
                     </div>

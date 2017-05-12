@@ -54,14 +54,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
             'uses' => 'UserController@memeber',
             'as' => 'users.memberData'
     ]);
-    Route::get('thread/newThread',[
-        'uses' =>'ThreadController@createByMemeber',
-        'as'=>'thread.newThread'
-    ]);
-        Route::post('storeThread',[
-        'uses' =>'ThreadController@storeByMember',
-        'as'=>'thread.storedByMember'
-    ]);
     Route::resource('thread','ThreadController');
 });
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
