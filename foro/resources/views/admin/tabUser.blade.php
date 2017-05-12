@@ -1,4 +1,4 @@
-  <!-- Tab panes -->
+@extends('layouts.tab')
   </br>
     <div class="panel panel-default">
 		<div class="panel-heading"><h3 class="panel-title"><strong>Admin Users</strong></h3>
@@ -29,8 +29,8 @@
                         </td>
                         <td>{{ $user->email }} </td>
                         <td>
-                            <a href="{{route('users.edit',$user->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
-                            <a href="{{route('users.destroy',$user->id)}}" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
+                            <a href="{{route('users.edit',$user->id)}}" target="_parent" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
+                            <a href="{{route('users.destroy',$user->id)}}" target="_parent" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
                         </td>
                     </tr>
                 @endforeach
@@ -39,7 +39,7 @@
         {!! $users->render() !!}
 
 
-        <h3>Buscar Usuario</h3>
+        <h3>Buscar</h3>
           {!! Form::open(['route' => 'users.index','method' => 'GET']) !!}
             <div class="input-group">
               {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Name']) !!} 
@@ -49,9 +49,7 @@
               </span>  
             </div>
           {!! Form::close() !!}
-
-
-        <h3>Buscar Email</h3>
+          <br>
           {!! Form::open(['route' => 'users.index','method' => 'GET']) !!}
             <div class="input-group">
               {!! Form::text('email',null,['class'=>'form-control','placeholder'=>'Email']) !!} 

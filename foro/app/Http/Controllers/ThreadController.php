@@ -22,7 +22,7 @@ class ThreadController extends Controller
         $dir = Input::get('dir');
         if($dir == 'desc')
         {
-            $threads = Thread::orderBy('id' , $dir)->paginate(5);
+            $threads = Thread::orderBy('id' ,'desc')->paginate(5);
         }else
         {
             $threads = Thread::orderBy('id','asc')->paginate(5);
@@ -38,6 +38,31 @@ class ThreadController extends Controller
 
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+    }
+
+    public function frame()
+    {
+        $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $dir = Input::get('dir');
+        if($dir == 'desc')
+        {
+            $threads = Thread::orderBy('id' ,'desc')->paginate(5);
+        }else
+        {
+            $threads = Thread::orderBy('id','asc')->paginate(5);
+        }
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
+
+        //dd($threads);
+        return view('admin.threads.index', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
 
     public function create()

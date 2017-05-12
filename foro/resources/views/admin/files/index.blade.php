@@ -1,3 +1,4 @@
+@extends('layouts.tab')
   </br>
     <div class="panel panel-default">
 	<div class="panel-heading"><h3 class="panel-title"><strong>Lista de archivos</strong></h3>
