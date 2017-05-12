@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
-    <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -87,4 +86,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script {{asset('js/bootstrap.min.js')}}></script>
+    <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
+    @yield('js')
 </html>

@@ -67,18 +67,7 @@
                 <div class="post-description"> 
                     <!--<p>{!!  nl2br(e($message->texto)) !!}</p>-->
                     <div class="well">
-                     <?php
-                        $string = $message->texto;
-                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU","/\[vid]([^'\"]*)\[\/vid]/iU");          
-                        $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">",
-                            "<div class=\"embed-responsive embed-responsive-16by9\">
-  <iframe class=\"embed-responsive-item\" src=\"\\1\" allowfullscreen></iframe>
-</div>");            
-                        echo preg_replace($search, $replace, nl2br(e($string)));
-
-                        //$search = array("/\[img]([^'\"]*)\[\/img]/iU");
-                        //$replace = array("<img src=\"\\1\">");
-                    ?>
+                        {!!$message->texto!!}
                     </div>
                 </div>
             </div>
@@ -102,26 +91,17 @@ function addText(event) {
 <div class="container">
     <div class="row">
         <div class="well">
-
-            <ol onclick="addText(event)">
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li>
-            <span class="glyphicon glyphicon-link"></span></button>
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li>
-            <span class="glyphicon glyphicon-picture"></span></button>
             <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li>
             <span class="glyphicon glyphicon glyphicon-film"></span></button>
             </ol>
 
-            <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment: 
+            <h4><i class="fa fa-paper-plane-o"></i> Dejar comentario: 
             </h4>
             
                     {!! Form::open(['route' => 'message.store','method' => 'POST']) !!}
                     <div class="form-group">
-                        {!! Form::textarea('texto',null,[
-                        'id' => 'area',
-                        'class'=>'form-control',
-                        'placeholder' => 'Texto',
-                        'required']) !!}
+                        {!! Form::textarea('texto',null,['id' => 'area','class'=>'form-control textarea','placeholder' => 'Texto','required']) !!}
+
                     </div>
 
                     <div class="form-group">
@@ -135,11 +115,12 @@ function addText(event) {
     </div>
 </div>
 
-
-<!--<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PIh2xe4jnpk"></iframe>
-</div>-->
-
+@section('js')
+    <script>
+        $('textarea').trumbowyg({
+        });
+    </script>
+@endsection
 
 @endsection
 

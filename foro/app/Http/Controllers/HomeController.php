@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Thread;
 use App\Image;
-
+use App\User;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,8 @@ class HomeController extends Controller
     {
         $categories = Category::orderBy('id','asc')->paginate(10);
         $threads = Thread::orderBy('num_mensajes','desc')->paginate(10);
+        $messages = Message::all();
+        $users = User::all();
         $threads->each(function($threads)
         {
             $threads->category;
@@ -25,6 +28,6 @@ class HomeController extends Controller
         //$images = Image::find($id);
 
         //dd($threads);
-        return view('welcome')->with('threads',$threads)->with('categories',$categories);
+        return view('welcome')->with('threads',$threads)->with('categories',$categories)->with('numUsers',count($users))->with('numMess',count($messages))->with('numThr',count($threads));
     }
 }

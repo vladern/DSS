@@ -23,6 +23,12 @@
                 @endif
             @endforeach
         </div>
+        <ul class="list-group">
+        <li class="list-group-item" style="text-align:center;background:black;color:white">Estadísticas</li>
+        <li class="list-group-item">Número de usuarios: {{$numUsers}}</li>
+        <li class="list-group-item">Número de hilos: {{$numThr}}</li>
+        <li class="list-group-item">Número de mensajes: {{$numMess}}</li>
+        </ul>
     </div>
     <div class="col-md-9">
         <div class="container-fluid">
@@ -84,7 +90,7 @@
                         
 
                     </div>
-                        @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>
