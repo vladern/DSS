@@ -111,7 +111,7 @@ class ThreadController extends Controller
         $thread = Thread::find($id);
         $thread->delete();
         flash('El hilo ha sido borrado de la BBDD', 'danger');
-        return redirect()->route('thread.index');
+        return redirect()->action('CategoryController@show', ['id' => $thread->category_id]);
     }
     
     public function show($id)
