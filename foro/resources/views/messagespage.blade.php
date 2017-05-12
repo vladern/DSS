@@ -57,11 +57,12 @@
 
                      <?php
                         $string = $message->texto;
-                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU","/\[vid]([^'\"]*)\[\/vid]/iU");          
+                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU","/\[vid]([^'\"]*)\[\/vid]/iU",
+                            "/:sinfotos:/");
                         $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">",
                             "<div class=\"embed-responsive embed-responsive-16by9\">
   <iframe class=\"embed-responsive-item\" src=\"\\1\" allowfullscreen></iframe>
-</div>");            
+</div>","<img src=\"/images/sinfotos.gif\" class=\"img-responsive\" alt=\"\">");            
                         echo preg_replace($search, $replace, nl2br(e($string)));
 
                         //$search = array("/\[img]([^'\"]*)\[\/img]/iU");
