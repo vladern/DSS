@@ -42,6 +42,37 @@ class UserController extends Controller
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
+
+    public function frame(Request $request){
+        if ($request->email == NULL && $request->name == NULL) {
+            $users = User::orderBy('id','asc')->paginate(5);
+        }
+        else {
+
+            if ($request->name != NULL) {
+                $users = User::search($request->name)->orderBy('id','asc')->paginate(4);
+            }
+
+            else {
+                $users = User::email($request->email)->orderBy('id','asc')->paginate(4);
+            }
+            
+        }
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','asc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
+        //dd($threads);
+        return view('admin.tabUser', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+    }
+
+
     public function show()
     {
         return view('admin.login');

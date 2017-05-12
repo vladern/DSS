@@ -109,4 +109,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
     ]);
 });
 
+    Route::get('/admin/tabCategories', 'CategoryController@frame');
+    Route::get('/admin/tabUser', 'UserController@frame');
+    Route::get('/admin/threads/index', 'ThreadController@frame');
+    Route::get('/admin/messages/tabMessages', 'MessageController@frame');
 

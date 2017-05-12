@@ -15,16 +15,24 @@
 </ul>
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-      @include('admin.tabUser')
+     <iframe src="/admin/tabUser" scrolling="no" width="100%" height="480px" frameBorder="0">
+     </iframe>
+     <!-- @include('admin.tabUser') -->
   </div>
   <div id="menu1" class="tab-pane fade">
-      @include('admin.tabCategories')
+     <iframe src="/admin/tabCategories" scrolling="no" width="100%" height="480px" frameBorder="0">
+     </iframe>
+      <!-- @include('admin.tabCategories') -->
   </div>
     <div id="menu2" class="tab-pane fade">
-      @include('admin.threads.index')
+      <iframe src="/admin/threads/index" scrolling="no" width="100%" height="480px" frameBorder="0">
+      </iframe>
+     <!-- @include('admin.threads.index') -->
     </div>
     <div id="menu3" class="tab-pane fade">
-      @include('admin.messages.tabMessages')
+      <iframe src="/admin/messages/tabMessages" scrolling="no" width="100%" height="480px" frameBorder="0">
+      </iframe>
+      <!-- @include('admin.messages.tabMessages') -->
     </div>
     <div id="menu4" class="tab-pane fade">
       @include('admin.files.index')

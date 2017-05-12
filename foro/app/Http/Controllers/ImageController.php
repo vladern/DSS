@@ -33,7 +33,7 @@ class ImageController extends Controller
 
      public function create(){
         return view('admin.files.create');
-    }
+     }
 
     public function store(Request $request) {
         
