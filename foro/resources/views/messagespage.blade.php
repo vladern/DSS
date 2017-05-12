@@ -89,12 +89,9 @@ function addText(event) {
         <div class="well">
 
             <ol onclick="addText(event)">
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li>
-            <span class="glyphicon glyphicon-link"></span></button>
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li>
-            <span class="glyphicon glyphicon-picture"></span></button>
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li>
-            <span class="glyphicon glyphicon glyphicon-film"></span></button>
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li><span class="glyphicon glyphicon-link"></span></button>
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li><span class="glyphicon glyphicon-picture"></span></button>
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li><span class="glyphicon glyphicon-film"></span></button>
             </ol>
 
             <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment: 
