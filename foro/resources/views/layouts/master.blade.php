@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
-    <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -32,19 +31,20 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     @if(Auth::check())
-                    <li>
-                        <a href="/admin">Administrar</a>    
-                    </li>
-
+                        @if(Auth::user()->tipo=='admin')
+                        <li>
+                            <a href="/admin">Administrar</a>    
+                        </li>
+                        @endif
+                    @endif 
                     <li>
                         <a href="{{ route('categories.index') }}">Categorias</a>    
-                    </li>
-                    @endif    
+                    </li>   
                 </ul>
 
                 @if(Auth::check())
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{route('users.edit',Auth::user()->id)}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+                        <li><a href="{{route('users.memberData',Auth::user()->id)}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
                         <li><a href="{{ route('exit') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>              
                 @else
@@ -86,4 +86,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script {{asset('js/bootstrap.min.js')}}></script>
+    <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
+    @yield('js')
 </html>

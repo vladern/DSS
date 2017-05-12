@@ -13,19 +13,15 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-8">
+        <div class="col-md-12">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading" style="background-color: #D8D8D8">
                     <h3 href="#"><b>{{$thread->descripcion}}</b> <span class="label label-warning pull-right">{{$thread->category->titulo}}</span> </h3>
-                </div> 
-            </div>
-        </div>
-    </div>
-
+                </div>
 
 @foreach ($messages as $message)
-    <div class="row">
-        <div class="col-8">
+    <div class="row" style="margin-top:2%">
+        <div class="col-md-11" style="margin-left:5%">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
@@ -43,7 +39,7 @@
                             }
                         ?>
 
-                        <img src="/images/{{$icono}}" class="img-circle avatar" alt="user profile image">
+                    <img src="/images/{{$icono}}" class="img-circle avatar" alt="user profile image">
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
@@ -51,29 +47,36 @@
                         </div>
                         <h6 class="text-muted time">Date: {{$message->created_at}}</h6>
                     </div>
+                    <ul style="list-style-type:none;float:right;margin-right:2%;margin-bottom: 10%;">
+                    @if(Auth::check())
+                        <li>
+                            <a href="" role="button">
+                                <span class="glyphicon glyphicon-pencil" >Citar</span>
+                            </a>
+                        </li>
+                        @if(Auth::user()->tipo=='admin')
+                        <li>
+                            <a href="{{route('message.destroy',$message->id)}}" onclick="return confirm('Estas seguro ?')"  role="button">
+                                <span class="glyphicon glyphicon-remove ">Delete</span>
+                            </a>
+                        </li>   
+                        @endif
+                    @endif    
+                    </ul>
                 </div> 
                 <div class="post-description"> 
                     <!--<p>{!!  nl2br(e($message->texto)) !!}</p>-->
-
-                     <?php
-                        $string = $message->texto;
-                        $search = array("/\[url]([^'\"]*)\[\/url]/iU","/\[img]([^'\"]*)\[\/img]/iU","/\[vid]([^'\"]*)\[\/vid]/iU",
-                            "/:sinfotos:/");
-                        $replace = array("<a href=\"\\1\" target=\"_blank\">\\1</a>","<img src=\"\\1\" class=\"img-responsive\">",
-                            "<div class=\"embed-responsive embed-responsive-16by9\">
-  <iframe class=\"embed-responsive-item\" src=\"\\1\" allowfullscreen></iframe>
-</div>","<img src=\"/images/sinfotos.gif\" class=\"img-responsive\" alt=\"\">");            
-                        echo preg_replace($search, $replace, nl2br(e($string)));
-
-                        //$search = array("/\[img]([^'\"]*)\[\/img]/iU");
-                        //$replace = array("<img src=\"\\1\">");
-                    ?>
-
+                    <div class="well">
+                        {!!$message->texto!!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endforeach
+</div>
+</div>
+</div>
 </div>
 </br>
 
@@ -88,23 +91,25 @@ function addText(event) {
 <div class="container">
     <div class="row">
         <div class="well">
+<<<<<<< HEAD
 
             <ol onclick="addText(event)">
             <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li><span class="glyphicon glyphicon-link"></span></button>
             <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li><span class="glyphicon glyphicon-picture"></span></button>
             <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li><span class="glyphicon glyphicon-film"></span></button>
+=======
+            <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li>
+            <span class="glyphicon glyphicon glyphicon-film"></span></button>
+>>>>>>> 0c07f14e5034ad101ac23c29163f584944dff4a8
             </ol>
 
-            <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment: 
+            <h4><i class="fa fa-paper-plane-o"></i> Dejar comentario: 
             </h4>
             
                     {!! Form::open(['route' => 'message.store','method' => 'POST']) !!}
                     <div class="form-group">
-                        {!! Form::textarea('texto',null,[
-                        'id' => 'area',
-                        'class'=>'form-control',
-                        'placeholder' => 'Texto',
-                        'required']) !!}
+                        {!! Form::textarea('texto',null,['id' => 'area','class'=>'form-control textarea','placeholder' => 'Texto','required']) !!}
+
                     </div>
 
                     <div class="form-group">
@@ -118,11 +123,12 @@ function addText(event) {
     </div>
 </div>
 
-
-<!--<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PIh2xe4jnpk"></iframe>
-</div>-->
-
+@section('js')
+    <script>
+        $('textarea').trumbowyg({
+        });
+    </script>
+@endsection
 
 @endsection
 

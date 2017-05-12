@@ -58,7 +58,7 @@ class MessageController extends Controller
         $updatethread->save();
 
         flash('El mensaje ha sido borrado', 'danger');
-        return redirect()->route('message.index');
+        return redirect()->action('ThreadController@show', ['id' => $message->thread_id]);
     }
 
     public function store (Request $request) 

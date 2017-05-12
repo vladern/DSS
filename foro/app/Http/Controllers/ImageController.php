@@ -58,7 +58,7 @@ class ImageController extends Controller
         $image->save() ;
 
          flash('La imagen se ha subido correctamente','success');
-         return redirect()->route('images.index');
+         return redirect()->route('/');
     }
 
     public function destroy($id)

@@ -39,6 +39,11 @@ class ThreadController extends Controller
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
+    public function createByMemeber()
+    {
+        $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
+        return view('admin.threads.create')->with('categories',$categories);
+    }
 
     public function frame()
     {
@@ -73,7 +78,6 @@ class ThreadController extends Controller
 
     public function store(ThreadRequest $request)
     {
-        //dd($request);
         $thread = new Thread();
         $thread->descripcion = $request->descripcion;
         $thread->num_mensajes = 0;
@@ -81,10 +85,8 @@ class ThreadController extends Controller
         $thread->user_id = \Auth::user()->id;
         $thread->save();
         flash('El hilo ha sido creado con exito', 'success');
-        return redirect()->route('thread.index');
-        
+        return redirect()->action('ThreadController@show', ['id' => $thread->id]);  
     }
-
     public function edit($id) {
         $categories = Category::OrderBy('titulo','ASC')->pluck('titulo','id');
         $thread = Thread::find($id);
@@ -109,7 +111,7 @@ class ThreadController extends Controller
         $thread = Thread::find($id);
         $thread->delete();
         flash('El hilo ha sido borrado de la BBDD', 'danger');
-        return redirect()->route('thread.index');
+        return redirect()->action('CategoryController@show', ['id' => $thread->category_id]);
     }
     
     public function show($id)
