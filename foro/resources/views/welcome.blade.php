@@ -33,23 +33,30 @@
     <div class="col-md-9">
         <div class="container-fluid">
             <div class="row">    
-                <div class="input-group">
-                    <div class="input-group-btn search-panel">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">Filtrar</span> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                        <li><a href="#contains">Recientes</a></li>
-                        <li><a href="#its_equal">Antiguos</a></li>
-                        <li><a href="#greather_than">Populares</a></li>
-                        </ul>
-                    </div>
-                    <input type="hidden" name="search_param" value="all" id="search_param">         
-                    <input type="text" class="form-control" name="x" placeholder="Buscar hilo">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
-                </div>
+                
+
+                    {!! Form::open(['route' => '/','method' => 'GET']) !!}
+                        <div class="input-group search-panel">
+
+                        <div class="input-group-btn search-panel">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span id="search_concept">Filtrar</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('recent')}}">Recientes</a></li>
+                            <li><a href="{{route('old')}}">Antiguos</a></li>
+                            <li><a href="{{route('/')}}">Populares</a></li>
+                            </ul>
+                        </div>
+
+                          {!! Form::text('descripcion',null,['class'=>'form-control','placeholder'=>'Buscar Hilo']) !!} 
+
+                          <span class="input-group-btn">
+                            {!! Form::submit('Buscar',['class'=> 'btn btn-primary']) !!}
+                          </span>  
+                        </div>
+                    {!! Form::close() !!}
+
             </div>
         </div>
         </br>
