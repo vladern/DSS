@@ -15,7 +15,7 @@
 </ul>
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-     <iframe src="/admin/tabUser" scrolling="no" width="100%" height="480px" frameBorder="0">
+     <iframe src="/admin/tabUser" scrolling="no" width="100%" height="650px" frameBorder="0">
      </iframe>
   </div>
   <div id="menu1" class="tab-pane fade">
@@ -34,11 +34,11 @@
           {!! Form::close() !!}
   </div>
     <div id="menu2" class="tab-pane fade">
-      <iframe src="/admin/threads/index" scrolling="no" width="100%" height="480px" frameBorder="0">
+      <iframe src="/admin/threads/index" scrolling="no" width="100%" height="650px" frameBorder="0">
       </iframe>
     </div>
     <div id="menu3" class="tab-pane fade">
-      <iframe src="/admin/messages/tabMessages" scrolling="no" width="100%" height="480px" frameBorder="0">
+      <iframe src="/admin/messages/tabMessages" scrolling="no" width="100%" height="650px" frameBorder="0">
       </iframe>
     </div>
     <div id="menu4" class="tab-pane fade">

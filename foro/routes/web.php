@@ -21,6 +21,19 @@ Route::group(['prefix'=>'/'],function()
         'uses' =>'HomeController@index',
         'as' => '/'
     ]);
+
+    Route::get('recent',
+    [
+        'uses' =>'HomeController@recent',
+        'as' => 'recent'
+    ]);
+
+    Route::get('old',
+    [
+        'uses' =>'HomeController@old',
+        'as' => 'old'
+    ]);
+
     Route::get('signin',
     [
         'uses' =>'UserController@show',
@@ -47,14 +60,19 @@ Route::group(['prefix'=>'/'],function()
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     
     Route::resource('categories','CategoryController');
-    Route::resource('thread','ThreadController');
     Route::resource('message','MessageController');
     Route::resource('upload-images','ImageController');
     Route::resource('images','ImageController');
+    Route::get('users/{id}/memeberData',[
+            'uses' => 'UserController@memeber',
+            'as' => 'users.memberData'
+    ]);
+    Route::resource('thread','ThreadController');
 });
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
 {
-    Route::resource('users','UserController');
+    
+    Route::resource('users','UserController');  
     Route::get('/',
     [
         'uses' => 'UserController@index',

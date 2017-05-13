@@ -44,6 +44,6 @@ class LoginController extends Controller
     public function exit()
     {
         \Auth::logout();
-        return redirect('/');
+        return redirect()->route('index');
     }
 }
