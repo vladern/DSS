@@ -3,6 +3,7 @@
 @section('content')
 
 <link href="/css/estilomensaje.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 </br>
@@ -55,12 +56,11 @@
         </br>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-8">
+                <div class="col-md-12">
                     @foreach($threads as $thread)
-                        <div class="panel panel-white post panel-shadow">
+                        <div class="col-xs-12 panel panel-white post panel-shadow animated  bounceInDown">
                             <div class="post-heading">
-                                <div class="pull-left image">
-
+                                <div class="col-md-2 pull-left">
                                     <?php
                                         $contador = DB::table('images')->where('user_id',$thread->user_id)->count();
 
@@ -76,20 +76,20 @@
                                     <img src="images/{{$icono}}" class="img-circle avatar" alt="user profile image">
 
                                 </div>
-                                <div class="pull-left meta">
+                                <div class="col-md-8 pull-left meta">
                                     <div class="title h5">
                                         <a href="{{route('thread.show',$thread->id)}}"><b>{{$thread->descripcion}}</b></a>
                                     </div>
                                     <h6 class="text-muted time">Posted by:  {{$thread->user->name}}</h6>
                                     <h6 class="text-muted time">Date:  {{$thread->created_at}}</h6>
                                 </div>
-                        <span class="pull-right">
-                        <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}
-                        </span>
-                    </div> 
-                        
-
-                    </div>
+                                <div class="col-md-2">
+                                    <span class="pull-right">
+                                        <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}</span>
+                                    </span>
+                                </div>
+                          </div> 
+                </div>
                     @endforeach
                 </div>
             </div>

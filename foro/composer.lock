@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "f3595dff216a2c5ab4523f697e6ed4ab",
-
+    "content-hash": "e19938481bd897fc8e6e1d237ac73400",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -74,16 +72,16 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "4.2.2",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/eloquent-sluggable.git",
-                "reference": "08a8c7f02120b481e5856b518f0351c95259e305"
+                "reference": "cbeb6e16b783173dbb95e00f78237d349e73c07d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/08a8c7f02120b481e5856b518f0351c95259e305",
-                "reference": "08a8c7f02120b481e5856b518f0351c95259e305",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/cbeb6e16b783173dbb95e00f78237d349e73c07d",
+                "reference": "cbeb6e16b783173dbb95e00f78237d349e73c07d",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +120,7 @@
                 "laravel",
                 "slug"
             ],
-            "time": "2017-03-23T19:14:22+00:00"
+            "time": "2017-04-18T15:03:20+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -355,16 +353,16 @@
         },
         {
             "name": "laracasts/flash",
-            "version": "2.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laracasts/flash.git",
-                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+                "reference": "1c7658652e10791d934a37bc0f6f0bd5ce5ac73f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
-                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/1c7658652e10791d934a37bc0f6f0bd5ce5ac73f",
+                "reference": "1c7658652e10791d934a37bc0f6f0bd5ce5ac73f",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +370,8 @@
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "mockery/mockery": "dev-master"
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "^6.1"
             },
             "type": "library",
             "autoload": {
@@ -394,7 +393,7 @@
                 }
             ],
             "description": "Easy flash notifications",
-            "time": "2016-07-11T20:46:02+00:00"
+            "time": "2017-04-26T16:55:22+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2279,12 +2278,12 @@
             "version": "0.9.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/padraic/mockery.git",
+                "url": "https://github.com/mockery/mockery.git",
                 "reference": "1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
                 "reference": "1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
                 "shasum": ""
             },
