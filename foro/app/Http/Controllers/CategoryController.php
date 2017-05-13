@@ -58,7 +58,7 @@ class CategoryController extends Controller
         $category->save();
 
         flash('Nueva Categoria creada con exito !','success');
-
+        
         return redirect()->route('categories.index');
     }
 

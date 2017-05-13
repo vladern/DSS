@@ -24,19 +24,7 @@
                 </tr>
             @endforeach
           </tbody>
-        </table>
-
-
-          <h3>Nueva Categoria</h3>
-          {!! Form::open(['route' => 'categories.store','method' => 'POST']) !!}
-            <div class="input-group">
-              {!! Form::text('titulo',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!} 
-
-              <span class="input-group-btn">
-                {!! Form::submit('Añadir',['class'=> 'btn btn-primary']) !!}
-              </span>  
-            </div>
-          {!! Form::close() !!}
+        </table>         
           {!! $categories->render() !!}
           
         </div>
