@@ -91,21 +91,9 @@ function addText(event) {
 <div class="container">
     <div class="row">
         <div class="well">
-<<<<<<< HEAD
-
-            <ol onclick="addText(event)">
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[url]  [/url]</li><span class="glyphicon glyphicon-link"></span></button>
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[img]  [/img]</li><span class="glyphicon glyphicon-picture"></span></button>
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li><span class="glyphicon glyphicon-film"></span></button>
-=======
-            <button type="button" class=".btn-primary pull-right"><li class="hide">[vid]  [/vid]</li>
-            <span class="glyphicon glyphicon glyphicon-film"></span></button>
->>>>>>> 0c07f14e5034ad101ac23c29163f584944dff4a8
-            </ol>
 
             <h4><i class="fa fa-paper-plane-o"></i> Dejar comentario: 
             </h4>
-            
                     {!! Form::open(['route' => 'message.store','method' => 'POST']) !!}
                     <div class="form-group">
                         {!! Form::textarea('texto',null,['id' => 'area','class'=>'form-control textarea','placeholder' => 'Texto','required']) !!}
@@ -117,7 +105,6 @@ function addText(event) {
                     </div>
                     {!! Form::hidden('thread_id', $thread->id) !!}
                     {!! Form::close() !!}
-
             </div>
         </div>
     </div>
@@ -125,7 +112,39 @@ function addText(event) {
 
 @section('js')
     <script>
-        $('textarea').trumbowyg({
+        $('textarea').trumbowyg({    
+        btnsDef: {
+        // Customizables dropdowns
+        image: {
+            dropdown: ['insertImage', 'upload', 'base64','noembed'],
+            ico: 'insertImage'
+        }
+    },
+    btns: [
+        ['viewHTML'],
+        ['undo', 'redo'],
+        ['formatting'],
+        'btnGrp-design',
+        ['link'],
+        ['image'],
+        'btnGrp-justify',
+        'btnGrp-lists',
+        ['foreColor', 'backColor'],
+        ['preformatted'],
+        ['horizontalRule'],
+        ['fullscreen']
+    ],
+    plugins: {
+        // Add imagur parameters to upload plugin
+        upload: {
+            serverPath: 'https://api.imgur.com/3/image',
+            fileFieldName: 'image',
+            headers: {
+                'Authorization': 'Client-ID 9e57cb1c4791cea'
+            },
+            urlPropertyName: 'data.link'
+        }
+    }
         });
     </script>
 @endsection

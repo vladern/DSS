@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background:black;color:white" role="navigation">
     	<!-- Container -->
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -87,5 +87,13 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script {{asset('js/bootstrap.min.js')}}></script>
     <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
+
+    <script src="{{ asset('plugins/trumbowyg/plugins/base64/trumbowyg.base64.min.js') }}"></script>
+    <script src="{{ asset('plugins/trumbowyg/plugins/upload/trumbowyg.upload.min.js') }}"></script>
+    <script src="{{ asset('plugins/trumbowyg/plugins/emoji/trumbowyg.emoji.min.js') }}"></script>
+    <script src="{{ asset('plugins/trumbowyg/plugins/noembed/trumbowyg.noembed.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/plugins/colors/ui/trumbowyg.colors.css')}}">
+    <script src="{{ asset('plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js') }}"></script>
+
     @yield('js')
 </html>
