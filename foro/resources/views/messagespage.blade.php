@@ -18,10 +18,13 @@
                 <div class="post-heading" style="background-color: #D8D8D8">
                     <h3 href="#"><b>{{$thread->descripcion}}</b> <span class="label label-warning pull-right">{{$thread->category->titulo}}</span> </h3>
                 </div>
+                </div>
+                </div>
+                </div>
 
 @foreach ($messages as $message)
-    <div class="row" style="margin-top:2%">
-        <div class="col-md-11" style="margin-left:5%">
+    <div class="row">
+        <div class="col-md-12">
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
@@ -75,9 +78,6 @@
     </div>
 @endforeach
 </div>
-</div>
-</div>
-</div>
 </br>
 
 <script>
@@ -91,7 +91,6 @@ function addText(event) {
 <div class="container">
     <div class="row">
         <div class="well">
-
             <h4><i class="fa fa-paper-plane-o"></i> Dejar comentario: 
             </h4>
                     {!! Form::open(['route' => 'message.store','method' => 'POST']) !!}
