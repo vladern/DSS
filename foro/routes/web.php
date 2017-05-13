@@ -21,6 +21,19 @@ Route::group(['prefix'=>'/'],function()
         'uses' =>'HomeController@index',
         'as' => '/'
     ]);
+
+    Route::get('recent',
+    [
+        'uses' =>'HomeController@recent',
+        'as' => 'recent'
+    ]);
+
+    Route::get('old',
+    [
+        'uses' =>'HomeController@old',
+        'as' => 'old'
+    ]);
+
     Route::get('signin',
     [
         'uses' =>'UserController@show',
