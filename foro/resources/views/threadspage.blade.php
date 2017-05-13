@@ -12,7 +12,7 @@
 </br/>
 
             <div class="panel panel-white post panel-shadow">
-            
+         
                 <div class="post-heading">
                     <div class="pull-left image">
                         <img src="http://irdl.info.yorku.ca/files/2014/02/category-icon-panel.png" class="img-circle avatar" alt="user profile image">
@@ -45,6 +45,7 @@
                             </li>
                         </ul>
                     </span>
+                    </div>
                     </div>
 
 
