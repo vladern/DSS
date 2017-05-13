@@ -96,6 +96,7 @@
                     </div>
                     </div>
                 @endforeach
+            {!! $threads->render() !!}
                 
 </div>
 </div>

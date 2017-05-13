@@ -117,7 +117,7 @@ class ThreadController extends Controller
     public function show($id)
     {
         $thread = Thread::find($id);
-        $messages = $thread->messages;
+        $messages = Message::where('thread_id', $thread->id)->paginate(20);
         return view('messagespage')->with('thread',$thread)->with('messages',$messages);
     }
 }

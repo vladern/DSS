@@ -89,7 +89,7 @@ class CategoryController extends Controller
 
     public function show($id){
         $category = Category::find($id);
-        $threads = $category->threads;
+        $threads = Thread::where('category_id', $category->id)->paginate(5);
         return view('threadspage')->with('category',$category)->with('threads',$threads);
     } 
 }

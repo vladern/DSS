@@ -79,7 +79,7 @@
 @endforeach
 </div>
 </br>
-
+    {!! $messages->render() !!}
 <script>
 function addText(event) {
     var targ = event.target || event.srcElement;
