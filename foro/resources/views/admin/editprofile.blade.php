@@ -70,7 +70,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('tipo','Tipo Usuario') !!}
-                    {!! Form::select('type',[''=>'Selecione una opción','member'=>'miembro','admin'=>'administrador'],null,['class'=>'form-control']) !!}
+                    {!! Form::select('type',[''=>'Selecione una opción','member'=>'miembro','admin'=>'administrador'],null,['class'=>'form-control', 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('editar',['class'=> 'btn btn-primary']) !!}
