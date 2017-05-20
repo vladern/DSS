@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title','Default')</title>
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
@@ -13,7 +14,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background:black;color:white" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top " style="background:black;color:white" role="navigation">
     	<!-- Container -->
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
