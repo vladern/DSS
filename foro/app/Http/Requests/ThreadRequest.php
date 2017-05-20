@@ -24,7 +24,7 @@ class ThreadRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion' => 'min:10|max:200|required|unique:threads',
+            'descripcion' => 'min:5|max:200|required|unique:threads',
             'category_id' => 'required'
         ];
     }

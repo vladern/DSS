@@ -9,6 +9,7 @@
 </br>
 </br>
 </br>
+
 <div class="col-md-12">
     <div class="col-md-3">
         <div class="list-group">
@@ -63,7 +64,6 @@
         </br>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
                     @foreach($threads as $thread)
                         <div class="col-xs-12 panel panel-white post panel-shadow animated  bounceInDown">
                             <div class="post-heading">
@@ -98,7 +98,6 @@
                           </div> 
                 </div>
                     @endforeach
-                </div>
             </div>
         </div>
     </div>
