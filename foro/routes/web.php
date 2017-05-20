@@ -112,6 +112,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
         'uses' => 'ImageController@destroy',
         'as' => 'images.destroy'
     ]);
+    Route::get('serch/{name}/{lastname}',
+    [
+        'uses'=>'UserController@search',
+        'as'=> 'search'
+    ]);
 });
 
     Route::get('/admin/tabCategories', 'CategoryController@frame');

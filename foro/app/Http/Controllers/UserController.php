@@ -71,7 +71,11 @@ class UserController extends Controller
         //dd($threads);
         return view('admin.tabUser', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
-
+    public function search(Request $request)
+    {
+        $users = User::buscar($request->get('name'),$request->get('lastname'))->orderBy('id','asc')->paginate(5);
+        return view('admin.users.table')->with('users',$users);
+    }
 
     public function show()
     {
