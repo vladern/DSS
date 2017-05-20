@@ -93,7 +93,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         flash('Bienvenido a bordo!','success');
-        return redirect()->route('users.index');
+        return view('admin.login');
     }
     public function edit($id)
     {
