@@ -15,8 +15,28 @@
 </ul>
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-     <iframe src="/admin/tabUser" scrolling="no" width="100%" height="650px" frameBorder="0">
+     <iframe src="/admin/tabUser" scrolling="no" width="100%" height="450px" frameBorder="0">
      </iframe>
+     <h3>Buscar</h3>
+          {!! Form::open(['route' => 'users.index','method' => 'GET']) !!}
+            <div class="input-group">
+              {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Name']) !!} 
+
+              <span class="input-group-btn">
+                {!! Form::submit('Buscar',['class'=> 'btn btn-primary']) !!}
+              </span>  
+            </div>
+          {!! Form::close() !!}
+          <br>
+          {!! Form::open(['route' => 'users.index','method' => 'GET']) !!}
+            <div class="input-group">
+              {!! Form::text('email',null,['class'=>'form-control','placeholder'=>'Email']) !!} 
+
+              <span class="input-group-btn">
+                {!! Form::submit('Buscar',['class'=> 'btn btn-primary']) !!}
+              </span>  
+            </div>
+          {!! Form::close() !!}
   </div>
   <div id="menu1" class="tab-pane fade">
      <iframe src="/admin/tabCategories" scrolling="no" width="100%" height="400px" frameBorder="0">
@@ -34,11 +54,11 @@
           {!! Form::close() !!}
   </div>
     <div id="menu2" class="tab-pane fade">
-      <iframe src="/admin/threads/index" scrolling="no" width="100%" height="650px" frameBorder="0">
+      <iframe src="/admin/threads/index" scrolling="no" width="100%" height="550px" frameBorder="0">
       </iframe>
     </div>
     <div id="menu3" class="tab-pane fade">
-      <iframe src="/admin/messages/tabMessages" scrolling="no" width="100%" height="650px" frameBorder="0">
+      <iframe src="/admin/messages/tabMessages" scrolling="no" width="100%" height="550px" frameBorder="0">
       </iframe>
     </div>
     <div id="menu4" class="tab-pane fade">
