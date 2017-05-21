@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" >
     <title>@yield('title','Default')</title>
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">

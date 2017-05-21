@@ -9,6 +9,11 @@
 			</div>
 				<div class="panel-body">
 				<section>
+				@if ($errors->has('email'))
+					<span class="help-block">
+						<strong>{{ $errors->first('email') }}</strong>
+					</span>
+				@endif
 				{!! Form::open(['route' => 'login','method' => 'POST']) !!}             
 					<div class="form-group">
 						{!! Form::label('email','Nick') !!}
