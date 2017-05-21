@@ -12,7 +12,7 @@
     {!! Form::open(['route' => 'thread.store','class'=>'form','method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('category_id','Categorias') !!}
-            {!! Form::select('category_id',$categories,null,['class'=>'form-control select-categorie','placeholder'=>'Seleccione una categoría','required']) !!}
+            {!! Form::select('category_id',$categories,null,['class'=>'form-control select-category','placeholder'=>'Seleccione una categoría','required']) !!}
         </div>
         <div class="form-group">    
             {!! Form::label('descripcion','Descripción') !!}
@@ -25,4 +25,14 @@
     </div>
     </div>
 
+@endsection
+@section('js')
+    <script>
+        $('.select-category').chosen(
+        {
+            no_results_text: "Oops,no se encontrado nada!",
+            width: "100%",
+            search_contains:true
+        });
+    </script>
 @endsection

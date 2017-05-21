@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/ui/trumbowyg.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -96,6 +95,6 @@
     <script src="{{ asset('plugins/trumbowyg/plugins/noembed/trumbowyg.noembed.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/plugins/colors/ui/trumbowyg.colors.css')}}">
     <script src="{{ asset('plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js') }}"></script>
-
+    <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
     @yield('js')
 </html>
