@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
     
 
     /**
@@ -39,11 +39,11 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('admin.login');
     }
     public function exit()
     {
         \Auth::logout();
-        return redirect('/');
+        return redirect()->route('/');
     }
 }

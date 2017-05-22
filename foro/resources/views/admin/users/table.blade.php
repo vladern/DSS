@@ -1,5 +1,4 @@
-@extends('layouts.tab')
-
+    @extends('layouts.tab')
       {!! Form::open(['route' => array('search','.name','.lastname'),'method' => 'GET','class'=>'navbar-form navbar-left pull-right','role'=>'search']) !!}
       <div class="form-group">
         {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre'])!!}
@@ -7,7 +6,6 @@
       </div>
         <button type="submit" class="btn btn-default">Buscar</button>
       {!! Form::close()!!}
-
     <div class="panel panel-default">
 		<div class="panel-heading"><h3 class="panel-title"><strong>Admin Users</strong></h3>
             <br/>

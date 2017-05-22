@@ -18,6 +18,23 @@ class CategoryController extends Controller
     public function index()
     {
         $users = User::orderBy('id','asc')->paginate(4);
+        $categories = Category::orderBy('id','asc')->paginate(100);
+        $threads = Thread::orderBy('id','asc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
+        //dd($threads);
+        return view('categorypage', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+    }
+
+    public function frame()
+    {
+        $users = User::orderBy('id','asc')->paginate(4);
         $categories = Category::orderBy('id','asc')->paginate(4);
         $threads = Thread::orderBy('id','asc')->paginate(5);
         $threads->each(function($threads)
@@ -29,7 +46,7 @@ class CategoryController extends Controller
         $messages = Message::orderBy('id', 'asc')->paginate(4);
         $images = Image::orderBy('id','asc')->paginate(5);
         //dd($threads);
-        return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+        return view('admin.tabCategories', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
 
    public function store(CategoryRequest $request)
@@ -41,7 +58,7 @@ class CategoryController extends Controller
         $category->save();
 
         flash('Nueva Categoria creada con exito !','success');
-
+        
         return redirect()->route('categories.index');
     }
 
@@ -70,8 +87,9 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function getCategories(){
-        $allCategories = Category::All();
-        return $allCategories;
+    public function show($id){
+        $category = Category::find($id);
+        $threads = Thread::where('category_id', $category->id)->paginate(5);
+        return view('threadspage')->with('category',$category)->with('threads',$threads);
     } 
 }

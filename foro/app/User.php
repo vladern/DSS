@@ -15,9 +15,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','apellidos', 'email', 'password','tipo'
     ];
 
+    public function scopeBuscar($query,$name,$apellidos)
+    {
+        if($name != "" and $apellidos != "")
+        {
+            $query->where('name','like',$name);
+            $query->where('apellidos','like',$apellidos);
+        }else if($name!="")
+        {
+            $query->where('name','like',$name);
+        }else if($apellidos!="")
+        {
+            $query->where('apellidos','like',$apellidos);
+        }
+        
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -26,7 +41,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
 
     public function messages() 
     {

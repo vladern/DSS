@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title','Editar Usuario ')
+@section('title','Datos personales')
 
 @section('content')
 
  <div class="container" style="margin-top:70px">
     <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title"><strong>Editar Usuario {{$user->name}}</strong></h3>     
+        <div class="panel-heading"><h3 class="panel-title"><strong>Datos personales de {{$user->name}}</strong></h3>     
         </div>
             <div class="panel-body">
             </br>
@@ -51,7 +51,6 @@
             </br>
             </br>
             <section>             
-            {!! Form::open(['route' => ['users.update',$user->id],'method' => 'PUT']) !!}
                 <div class="form-group">
                     {!! Form::label('name','Nombre') !!}
                     {!! Form::text('name',$user->name,['class'=>'form-control','placeholder'=>'Nombre','required']) !!}             
@@ -68,14 +67,6 @@
                     {!! Form::label('email','Email') !!}
                     {!! Form::email('email',$user->email,['class'=>'form-control','placeholder'=>'example@gmail.com','required']) !!}             
                 </div>
-                <div class="form-group">
-                    {!! Form::label('tipo','Tipo Usuario') !!}
-                    {!! Form::select('type',[''=>'Selecione una opción','member'=>'miembro','admin'=>'administrador'],null,['class'=>'form-control', 'required']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::submit('editar',['class'=> 'btn btn-primary']) !!}
-                </div>
-            {!! Form::close() !!}
             </section>
 
         </div>

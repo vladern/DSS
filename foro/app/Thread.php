@@ -36,4 +36,8 @@ class Thread extends Model
     public function user() {
         return $this->belongsTo('App\User');
     }
+
+    public function scopeSearch($query, $descripcion) {
+        return $query->where('descripcion','LIKE',"%$descripcion%");
+    }
 }

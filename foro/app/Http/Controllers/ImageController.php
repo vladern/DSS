@@ -33,7 +33,7 @@ class ImageController extends Controller
 
      public function create(){
         return view('admin.files.create');
-    }
+     }
 
     public function store(Request $request) {
         
@@ -58,7 +58,7 @@ class ImageController extends Controller
         $image->save() ;
 
          flash('La imagen se ha subido correctamente','success');
-         return redirect()->route('images.index');
+         return redirect()->route('/');
     }
 
     public function destroy($id)

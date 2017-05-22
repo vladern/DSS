@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ThreadRequest extends FormRequest
+class MessageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class ThreadRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion' => 'min:5|max:200|required|unique:threads',
-            'category_id' => 'required'
+            'texto' => 'min:2|max:200|required'
+            'thread_id' => 'required'
         ];
     }
 }

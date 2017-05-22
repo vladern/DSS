@@ -42,6 +42,41 @@ class UserController extends Controller
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
     }
+
+    public function frame(Request $request){
+        if ($request->email == NULL && $request->name == NULL) {
+            $users = User::orderBy('id','asc')->paginate(5);
+        }
+        else {
+
+            if ($request->name != NULL) {
+                $users = User::search($request->name)->orderBy('id','asc')->paginate(4);
+            }
+
+            else {
+                $users = User::email($request->email)->orderBy('id','asc')->paginate(4);
+            }
+            
+        }
+        $categories = Category::orderBy('id','asc')->paginate(4);
+        $threads = Thread::orderBy('id','asc')->paginate(5);
+        $threads->each(function($threads)
+        {
+            $threads->category;
+            $threads->user;
+            $threads->messages;
+        });
+        $messages = Message::orderBy('id', 'asc')->paginate(4);
+        $images = Image::orderBy('id','asc')->paginate(5);
+        //dd($threads);
+        return view('admin.tabUser', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+    }
+    public function search(Request $request)
+    {
+        $users = User::buscar($request->get('name'),$request->get('lastname'))->orderBy('id','asc')->paginate(5);
+        return view('admin.users.table')->with('users',$users);
+    }
+
     public function show()
     {
         return view('admin.login');
@@ -62,14 +97,18 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         flash('Bienvenido a bordo!','success');
-        return redirect()->route('users.index');
+        return view('admin.login');
     }
     public function edit($id)
     {
         $user = User::find($id);
         return view('admin.editprofile')->with('user',$user);
     }
-
+    public function memeber($id)
+    {
+        $user = User::find($id);
+        return view('admin.member.memberData')->with('user',$user);
+    }
     public function update(Request $request,$id)
     {
             $user = User::find($id);
