@@ -83,6 +83,11 @@
                                     <img src="images/{{$icono}}" class="img-circle avatar" alt="user profile image">
 
                                 </div>
+                                <div class="col-md-2 visible-xs">
+                                    <span class="pull-right">
+                                        <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}</span>
+                                    </span>
+                                </div>
                                 <div class="col-md-8 pull-left meta">
                                     <div class="title h5">
                                         <a href="{{route('thread.show',$thread->id)}}"><b>{{$thread->descripcion}}</b></a>
@@ -90,7 +95,7 @@
                                     <h6 class="text-muted time">Posted by:  {{$thread->user->name}}</h6>
                                     <h6 class="text-muted time">Date:  {{$thread->created_at}}</h6>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 hidden-xs">
                                     <span class="pull-right">
                                         <span class="glyphicon glyphicon-comment"> {{$thread->num_mensajes}}</span>
                                     </span>
