@@ -15,7 +15,8 @@ class UserController extends Controller
 {
     //aqui hay que descomentar lo comentado y comentar la linea de abajo tambien hay que quitar el request
     public function index(Request $request){
-        if ($request->email == NULL && $request->name == NULL) {
+        
+        if ($request->email == NULL && $request->name == NULL) {           
             $users = User::orderBy('id','asc')->paginate(5);
         }
         else {
@@ -41,6 +42,7 @@ class UserController extends Controller
         $images = Image::orderBy('id','asc')->paginate(5);
         //dd($threads);
         return view('admin.admin', compact('images'))->with('threads',$threads)->with('users',$users)->with('categories',$categories)->with('messages', $messages)->with('images', $images);
+        
     }
 
     public function frame(Request $request){
