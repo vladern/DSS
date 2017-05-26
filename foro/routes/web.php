@@ -84,7 +84,6 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function()
         'uses' => 'UserController@destroy',
         'as' => 'users.destroy'
     ]);
-
     
     Route::get('categories/{id}/destroy',
     [

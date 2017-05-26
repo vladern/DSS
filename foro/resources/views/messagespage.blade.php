@@ -46,7 +46,7 @@
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
-                            <a href="#"><b>{{$message->user->name}}</b></a>
+                            <a href="{{route('users.edit',$message->user_id)}}"><b>{{$message->user->nick}}</b></a>
                         </div>
                         <h6 class="text-muted time">Date: {{$message->created_at}}</h6>
                     </div>
