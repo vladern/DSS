@@ -1,8 +1,6 @@
 @extends('layouts.master')
-@section('title','Hilos')
 @section('content')
-
-
+@section('title',$category->titulo)
 <link href="/css/estilomensaje.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
@@ -20,6 +18,7 @@
                     <div class="pull-left meta">
                         <div class="title h5">
                             <a href="{{route('categories.show',$category->id)}}"><b>{{$category->titulo}}</b></a>
+
                         </div>
                         <h6 class="text">Descripcion de la Categoria</h6>
                     </div>
