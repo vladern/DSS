@@ -17,7 +17,7 @@
 				{!! Form::open(['route' => 'login','method' => 'POST']) !!}             
 					<div class="form-group">
 						{!! Form::label('email','Email') !!}
-						{!! Form::email('email',null,['class'=>'form-control','placeholder'=>'Email','required']) !!}             
+						{!! Form::email('email',null,['class'=>'form-control','placeholder'=>'email','required']) !!}             
 					</div>
 					<div class="form-group">
 						{!! Form::label('password','Password') !!}
